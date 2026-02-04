@@ -2,7 +2,6 @@
 
 import React, { ReactNode } from 'react';
 import { ThemeContextProvider } from '@/context/themeContext';
-import NextAuthProvider from '@/components/NextAuthProvider';
 import { ReactQueryProvider } from '@/providers/react-query-provider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,23 +9,21 @@ import 'react-toastify/dist/ReactToastify.css';
 const Providers = ({ children }: { children: ReactNode }) => {
 	return (
 		<ThemeContextProvider>
-			<NextAuthProvider>
-				<ReactQueryProvider>
-					{children}
-					<ToastContainer
-						position="top-right"
-						autoClose={3000}
-						hideProgressBar={false}
-						newestOnTop={true}
-						closeOnClick
-						rtl={false}
-						pauseOnFocusLoss
-						draggable
-						pauseOnHover
-						theme="dark"
-					/>
-				</ReactQueryProvider>
-			</NextAuthProvider>
+			<ReactQueryProvider>
+				{children}
+				<ToastContainer
+					position="top-right"
+					autoClose={3000}
+					hideProgressBar={false}
+					newestOnTop={true}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="dark"
+				/>
+			</ReactQueryProvider>
 		</ThemeContextProvider>
 	);
 };

@@ -25,7 +25,6 @@ import { TIcons } from '@/types/icons.type';
 import useDarkMode from '@/hooks/useDarkMode';
 import { TDarkMode } from '@/types/darkMode.type';
 import usersDb, { TUser } from '@/mocks/db/users.db';
-import { useSession } from 'next-auth/react';
 
 type TTab = {
 	text:
@@ -90,8 +89,8 @@ const ProfileClient = () => {
 
 	const { setDarkModeStatus } = useDarkMode();
 
-	const { data: session } = useSession();
-	const userData: TUser = usersDb.find((key) => key.username === session?.user?.name) as TUser;
+	// Usuario por defecto (índice 5)
+	const userData: TUser = usersDb[5] as TUser;
 
 	const [activeTab, setActiveTab] = useState<TTab>(TAB.EDIT);
 

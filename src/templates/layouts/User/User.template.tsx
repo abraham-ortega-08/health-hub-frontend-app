@@ -5,11 +5,16 @@ import Icon from '@/components/icon/Icon';
 import Badge from '@/components/ui/Badge';
 import User from '@/components/layouts/User/User';
 import usersDb, { TUser } from '@/mocks/db/users.db';
-import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const UserTemplate = () => {
-	const { data: session } = useSession();
-	const userData: TUser = usersDb.find((key) => key.username === session?.user?.name) as TUser;
+	const router = useRouter();
+	// Usuario por defecto (índice 5)
+	const userData: TUser = usersDb[5] as TUser;
+
+	const handleLogout = () => {
+		router.push('/login');
+	};
 
 	return (
 		<User
@@ -25,7 +30,7 @@ const UserTemplate = () => {
 			}>
 			<NavSeparator />
 			<NavItem {...authPages.profilePage} />
-			<NavItem text='Logout' icon='HeroArrowRightOnRectangle' onClick={() => signOut()} />
+			<NavItem text='Logout' icon='HeroArrowRightOnRectangle' onClick={handleLogout} />
 		</User>
 	);
 };
