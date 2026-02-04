@@ -1,5 +1,5 @@
 export interface Document {
-  id: number;
+  id: string;
   name: string;
   type: 'FIXED' | 'DYNAMIC';
   user_id: string;

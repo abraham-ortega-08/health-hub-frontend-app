@@ -12,8 +12,8 @@ interface UseDeleteOptions {
 
 interface UseDeleteReturn {
 	isDeleting: boolean;
-	deleteDocument: (documentId: number) => Promise<void>;
-	deleteDocuments: (documentIds: number[]) => Promise<void>;
+	deleteDocument: (documentId: string) => Promise<void>;
+	deleteDocuments: (documentIds: string[]) => Promise<void>;
 }
 
 export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
@@ -28,7 +28,7 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 	const deleteMutation = useDeleteDocumentsMutation();
 
 	const deleteDocuments = useCallback(
-		async (documentIds: number[]) => {
+		async (documentIds: string[]) => {
 			if (documentIds.length === 0) return;
 
 			// Confirmación
@@ -86,7 +86,7 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 	);
 
 	const deleteDocument = useCallback(
-		async (documentId: number) => {
+		async (documentId: string) => {
 			await deleteDocuments([documentId]);
 		},
 		[deleteDocuments]

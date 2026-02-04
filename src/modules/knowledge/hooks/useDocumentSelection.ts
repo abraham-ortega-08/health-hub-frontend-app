@@ -6,10 +6,10 @@ interface UseDocumentSelectionOptions {
 }
 
 interface UseDocumentSelectionReturn {
-	selectedIds: number[];
+	selectedIds: string[];
 	isDeleting: boolean;
-	handleSelectAll: (totalDocuments: number, allIds: number[]) => void;
-	handleToggleSelect: (id: number) => void;
+	handleSelectAll: (totalDocuments: number, allIds: string[]) => void;
+	handleToggleSelect: (id: string) => void;
 	handleDeleteSelected: () => Promise<void>;
 	clearSelection: () => void;
 	isAllSelected: (totalDocuments: number) => boolean;
@@ -20,7 +20,7 @@ export const useDocumentSelection = (
 	options: UseDocumentSelectionOptions = {}
 ): UseDocumentSelectionReturn => {
 	const { onDeleteSuccess } = options;
-	const [selectedIds, setSelectedIds] = useState<number[]>([]);
+	const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
 	const { isDeleting, deleteDocuments } = useDelete({
 		onSuccess: () => {
@@ -30,7 +30,7 @@ export const useDocumentSelection = (
 	});
 
 	// Manejar selección/deselección de todos
-	const handleSelectAll = useCallback((totalDocuments: number, allIds: number[]) => {
+	const handleSelectAll = useCallback((totalDocuments: number, allIds: string[]) => {
 		setSelectedIds((prev) => {
 			if (prev.length === totalDocuments) {
 				return [];
@@ -40,7 +40,7 @@ export const useDocumentSelection = (
 	}, []);
 
 	// Manejar selección/deselección individual
-	const handleToggleSelect = useCallback((id: number) => {
+	const handleToggleSelect = useCallback((id: string) => {
 		setSelectedIds((prev) =>
 			prev.includes(id) ? prev.filter((selectedId) => selectedId !== id) : [...prev, id]
 		);

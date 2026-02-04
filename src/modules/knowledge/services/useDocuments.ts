@@ -27,8 +27,8 @@ export const useUploadDocumentMutation = () => {
 };
 
 export const useDeleteDocumentsMutation = () => {
-  return useMutation<void, Error, number[]>({
-    mutationFn: async (documentIds: number[]) => {
+  return useMutation<void, Error, string[]>({
+    mutationFn: async (documentIds: string[]) => {
       return api.delete("documents/multiple", {
         data: documentIds,
       });

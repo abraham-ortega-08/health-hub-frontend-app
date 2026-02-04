@@ -10,7 +10,7 @@ import { useDelete } from '../hooks';
 interface DocumentCardProps {
 	document: Document;
 	isSelected?: boolean;
-	onToggleSelect?: (id: number) => void;
+	onToggleSelect?: (id: string) => void;
 }
 
 export const DocumentCard: React.FC<DocumentCardProps> = ({

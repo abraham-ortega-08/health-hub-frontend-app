@@ -9,8 +9,8 @@ import { DocumentListEmpty } from './DocumentListEmpty';
 interface DocumentListProps {
 	documents: Document[];
 	isLoading: boolean;
-	selectedIds?: number[];
-	onToggleSelect?: (id: number) => void;
+	selectedIds?: string[];
+	onToggleSelect?: (id: string) => void;
 }
 
 export const DocumentList: React.FC<DocumentListProps> = ({

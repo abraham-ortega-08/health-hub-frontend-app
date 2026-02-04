@@ -2,7 +2,7 @@ import { Descendant } from 'slate';
 import { TUser } from '../../mocks/db/users.db';
 
 export type TMail = {
-	id: number;
+	id: string;
 	user: TUser;
 	fold: string;
 	dateTime: string;
