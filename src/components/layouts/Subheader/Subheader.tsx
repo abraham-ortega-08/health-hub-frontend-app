@@ -77,6 +77,7 @@ const Subheader: FC<ISubheaderProps> = (props) => {
 				data-component-name='Subheader'
 				ref={divRef}
 				className={classNames(
+					'sticky top-[var(--header-height)] z-[9]',
 					'flex flex-wrap justify-between gap-4',
 					'border-b border-zinc-300/25 bg-white/75',
 					'px-6 py-4',

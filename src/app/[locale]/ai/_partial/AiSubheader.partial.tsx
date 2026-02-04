@@ -1,18 +1,19 @@
+'use client';
+
 import React from 'react';
-import { appPages } from '@/config/pages.config';
 import Subheader, { SubheaderRight } from '@/components/layouts/Subheader/Subheader';
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import { useChatStore } from '@/modules/chat';
 
 const AiSubheaderPartial = () => {
+	const { createSession } = useChatStore();
+
 	return (
 		<Subheader>
 			<SubheaderRight>
-				<Link href={`${appPages.aiAppPages.subPages.aiDashboardPage.to}`}>
-					<Button variant='solid' icon='HeroPlus'>
-						New Chat
-					</Button>
-				</Link>
+				<Button variant='solid' icon='HeroPlus' onClick={createSession}>
+					New Chat
+				</Button>
 			</SubheaderRight>
 		</Subheader>
 	);

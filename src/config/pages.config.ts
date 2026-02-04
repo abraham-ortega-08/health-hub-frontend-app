@@ -24,6 +24,7 @@ export const appPages = {
 export const componentsPages = {};
 
 export const authPages = {
+
 	loginPage: {
 		id: 'loginPage',
 		to: '/login',

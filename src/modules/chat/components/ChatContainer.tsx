@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 
-interface IAIChatContainerCommonProps {
+interface ChatContainerProps {
 	children: ReactNode;
 }
-const AIChatContainerCommon: FC<IAIChatContainerCommonProps> = (props) => {
-	const { children } = props;
+
+const ChatContainer: FC<ChatContainerProps> = ({ children }) => {
 	return (
 		<div className='flex h-full flex-wrap content-start'>
 			<div className='grid w-full grid-cols-12 gap-4 last:[&>*]:mb-10'>{children}</div>
@@ -12,4 +12,4 @@ const AIChatContainerCommon: FC<IAIChatContainerCommonProps> = (props) => {
 	);
 };
 
-export default AIChatContainerCommon;
+export default ChatContainer;
