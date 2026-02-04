@@ -30,7 +30,7 @@ const PageFallbackTemplate = () => {
 						<div className='h-10 w-40 animate-pulse rounded-full bg-zinc-800/25 dark:bg-zinc-200/25' />
 					</SubheaderRight>
 				</Subheader>
-				<Container>
+				<Container className='!pt-0'>
 					<div className='grid grid-cols-12 gap-4'>
 						<div className='col-span-3'>
 							<Card className='h-[15vh] animate-pulse'>

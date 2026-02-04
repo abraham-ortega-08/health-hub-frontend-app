@@ -17,7 +17,7 @@ const AppWrapper = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	return (
-		<main className='flex flex-col flex-1'>
+		<main className='flex flex-col flex-1 overflow-hidden'>
 			{mounted && <style>{`:root {font-size: ${fontSize}px}`}</style>}
 			{children}
 		</main>

@@ -176,7 +176,7 @@ const ProfileClient = () => {
 					</Button>
 				</SubheaderRight>
 			</Subheader>
-			<Container className='h-full'>
+			<Container className='h-full !pt-0'>
 				<Card className='h-full'>
 					<CardBody>
 						<div className='grid grid-cols-12 gap-4'>
