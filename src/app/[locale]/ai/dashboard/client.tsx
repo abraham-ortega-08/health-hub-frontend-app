@@ -25,7 +25,7 @@ const AiDashboardClient = () => {
 		<PageWrapper>
 			<AiSubheaderPartial />
 			<Container className='flex shrink-0 grow basis-auto flex-col pb-0 overflow-hidden'>
-				<div ref={containerRef} className='flex-1 overflow-y-auto pb-4'>
+				<div ref={containerRef} className='flex-1 overflow-y-auto pb-6'>
 					<ChatContainer>
 						{currentSession && currentSession.messages.length > 0 ? (
 							<>
@@ -44,7 +44,7 @@ const AiDashboardClient = () => {
 										</div>
 									</ChatMessage>
 								)}
-								<div ref={messagesEndRef} className='h-4' />
+								<div ref={messagesEndRef} className='h-20' />
 							</>
 						) : (
 							<div className='col-span-12 my-20'>
