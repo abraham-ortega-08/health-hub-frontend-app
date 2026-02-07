@@ -16,7 +16,8 @@ const DefaultAsideTemplate = () => {
 			</AsideHead>
 			<AsideBody>
 				<Nav>
-					<NavItem {...appPages.aiAppPages.subPages.aiDashboardPage} />
+					<NavItem {...appPages.aiAppPages.subPages.aiChatPage} />
+					<NavItem {...appPages.aiAppPages.subPages.aiAgentsPage} />
 					<NavItem {...appPages.knowledgePage} />
 				</Nav>
 			</AsideBody>

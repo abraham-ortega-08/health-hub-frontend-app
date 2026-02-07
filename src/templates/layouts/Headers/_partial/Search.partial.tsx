@@ -11,8 +11,15 @@ import FieldWrap from '../../../../components/form/FieldWrap';
 import useDomRect from '../../../../hooks/useDomRect';
 import Badge from '../../../../components/ui/Badge';
 import Modal, { ModalBody, ModalHeader } from '../../../../components/ui/Modal';
+import { useTranslation } from 'react-i18next';
+import TranslationsProvider from '@/components/TranslationsProvider';
+import { useCurrentLocale } from 'next-i18n-router/client';
+import i18nConfig from '../../../../../i18nConfig';
 
-const SearchPartial = () => {
+const i18nNamespaces = ['translation'];
+
+const SearchPartialContent = () => {
+	const { t } = useTranslation();
 	const ref = useRef<HTMLDivElement>(null);
 	// @ts-ignore
 	const [domRect] = useDomRect(ref);
@@ -26,10 +33,10 @@ const SearchPartial = () => {
 		},
 	});
 
-	const leftContent = <Icon icon='HeroMagnifyingGlass' className='mx-2' />;
+	const leftContent = <Icon icon='heroicons:magnifying-glass' className='mx-2' />;
 	const rightContent = formik.values.searchField ? (
 		<Button
-			icon='HeroXMark'
+			icon='heroicons:x-mark'
 			color='red'
 			size='sm'
 			rounded='rounded'
@@ -48,11 +55,13 @@ const SearchPartial = () => {
 	);
 
 	const list = [
-		{ ...appPages.aiAppPages.subPages.aiDashboardPage, category: 'AI' },
+		{ ...appPages.aiAppPages.subPages.aiChatPage, category: 'AI' },
+		{ ...appPages.aiAppPages.subPages.aiAgentsPage, category: 'AI' },
+		{ ...appPages.knowledgePage, category: 'Knowledge' },
 	];
 	const result = list.filter(
 		(key) =>
-			key.text.toLowerCase().includes(formik.values.searchField.toLowerCase()) ||
+			t(key.text).toLowerCase().includes(formik.values.searchField.toLowerCase()) ||
 			key.category.toLowerCase().includes(formik.values.searchField.toLowerCase()),
 	);
 
@@ -111,7 +120,7 @@ const SearchPartial = () => {
 										<Button className='!p-0' icon={i.icon}>
 											<span
 												dangerouslySetInnerHTML={{
-													__html: i.text.replace(
+													__html: t(i.text).replace(
 														new RegExp(formik.values.searchField, 'gi'),
 														`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
 													),
@@ -149,9 +158,9 @@ const SearchPartial = () => {
 			{/* For Desktop :: END */}
 
 			{/* For Mobile :: BEGIN */}
-			<Button
-				icon='HeroMagnifyingGlass'
-				className='!bg-amber-500 sm:hidden'
+		<Button
+			icon='heroicons:magnifying-glass'
+			className='!bg-amber-500 sm:hidden'
 				onClick={() => setModalStatus(true)}
 			/>
 			<Modal isOpen={modalStatus} setIsOpen={setModalStatus}>
@@ -180,7 +189,7 @@ const SearchPartial = () => {
 												<Button className='!p-0' icon={i.icon}>
 													<span
 														dangerouslySetInnerHTML={{
-															__html: i.text.replace(
+															__html: t(i.text).replace(
 																new RegExp(
 																	formik.values.searchField,
 																	'gi',
@@ -222,6 +231,16 @@ const SearchPartial = () => {
 			</Modal>
 			{/* For Mobile :: END */}
 		</div>
+	);
+};
+
+const SearchPartial = () => {
+	const locale = useCurrentLocale(i18nConfig);
+
+	return (
+		<TranslationsProvider namespaces={i18nNamespaces} locale={locale || 'en'}>
+			<SearchPartialContent />
+		</TranslationsProvider>
 	);
 };
 
