@@ -3,16 +3,19 @@
 import React, { useState } from 'react';
 import { DocumentList, Document } from '@/components/documents';
 import { useAgentDocuments } from '../../../services';
+import { Pagination } from '@/modules/knowledge/components/Pagination';
 
 interface AgentDocumentsListProps {
 	agentId: string;
 }
 
 export const AgentDocumentsList: React.FC<AgentDocumentsListProps> = ({ agentId }) => {
-	const [page] = useState(1);
+	const [page, setPage] = useState(1);
+	const limit = 9; // 9 documents per page for 3x3 grid
+	
 	const { data, isLoading } = useAgentDocuments(agentId, {
 		page,
-		limit: 10,
+		limit,
 		includeContent: false,
 	});
 
@@ -31,8 +34,19 @@ export const AgentDocumentsList: React.FC<AgentDocumentsListProps> = ({ agentId 
 		  }))
 		: [];
 
+	// Calculate pagination values
+	const totalPages = data ? Math.ceil(data.total / limit) : 0;
+	const hasNext = data ? data.hasNext : false;
+	const hasPrevious = data ? data.hasPrevious : false;
+
+	const handlePageChange = (newPage: number) => {
+		if (newPage >= 1 && newPage <= totalPages) {
+			setPage(newPage);
+		}
+	};
+
 	return (
-		<div className='space-y-4'>
+		<div className='space-y-6'>
 			{/* Stats */}
 			{data && !isLoading && (
 				<div className='flex items-center justify-between'>
@@ -40,11 +54,27 @@ export const AgentDocumentsList: React.FC<AgentDocumentsListProps> = ({ agentId 
 						<span className='text-sm text-zinc-600 dark:text-zinc-400'>Total Documents:</span>
 						<span className='text-sm font-bold text-zinc-900 dark:text-zinc-100'>{data.total}</span>
 					</div>
+					<div className='text-sm text-zinc-600 dark:text-zinc-400'>
+						Page {page} of {totalPages}
+					</div>
 				</div>
 			)}
 
 			{/* Documents List using shared components */}
 			<DocumentList documents={documents} isLoading={isLoading} />
+
+			{/* Pagination */}
+			{data && !isLoading && totalPages > 1 && (
+				<div className='flex justify-center pt-4'>
+					<Pagination
+						currentPage={page}
+						totalPages={totalPages}
+						hasNext={hasNext}
+						hasPrevious={hasPrevious}
+						onPageChange={handlePageChange}
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

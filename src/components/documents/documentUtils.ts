@@ -29,9 +29,19 @@ export const getDocumentTypeLabel = (type: 'FIXED' | 'DYNAMIC'): string => {
  * Format file size in bytes to human readable format
  */
 export const formatFileSize = (bytes: number): string => {
+	// Handle invalid or undefined values
+	if (bytes === null || bytes === undefined || isNaN(bytes) || bytes < 0) {
+		return 'Unknown';
+	}
+	
 	if (bytes === 0) return '0 Bytes';
+	
 	const k = 1024;
 	const sizes = ['Bytes', 'KB', 'MB', 'GB'];
 	const i = Math.floor(Math.log(bytes) / Math.log(k));
-	return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
+	
+	// Ensure i is within bounds
+	const sizeIndex = Math.min(i, sizes.length - 1);
+	
+	return Math.round((bytes / Math.pow(k, sizeIndex)) * 100) / 100 + ' ' + sizes[sizeIndex];
 };
