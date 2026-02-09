@@ -15,7 +15,7 @@ const CloseButton: FC<ICloseButtonProps> = (props) => {
 	return (
 		<Button
 			data-component-name='CloseButton'
-			icon='HeroXMark'
+			icon='heroicons:x-mark'
 			color='red'
 			className={classes}
 			onClick={() => (setIsOpen ? setIsOpen(false) : undefined)}

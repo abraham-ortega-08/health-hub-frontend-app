@@ -19,7 +19,7 @@ const ExampleView = ({
 			<div className='mb-4 flex items-center'>
 				<div>{title}</div>
 				<div>
-					<Button icon='HeroCodeBracket' onClick={() => setExample1(true)} />
+					<Button icon='heroicons:code-bracket' onClick={() => setExample1(true)} />
 					<Modal isOpen={example1} setIsOpen={setExample1} size='lg' isScrollable>
 						<ModalHeader>{title}</ModalHeader>
 						<ModalBody>

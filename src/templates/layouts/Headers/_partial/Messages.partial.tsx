@@ -54,7 +54,7 @@ const MessagesPartial = () => {
 		<div className='relative'>
 			<Dropdown>
 				<DropdownToggle hasIcon={false}>
-					<Button icon='HeroChatBubbleLeftEllipsis' aria-label='Messages' />
+					<Button icon='heroicons:chat-bubble-left-ellipsis' aria-label='Messages' />
 				</DropdownToggle>
 				<DropdownMenu
 					placement='bottom-end'

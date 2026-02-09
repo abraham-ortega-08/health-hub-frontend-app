@@ -15,13 +15,12 @@ import Input from '@/components/form/Input';
 import Select from '@/components/form/Select';
 import Avatar from '@/components/Avatar';
 import FieldWrap from '@/components/form/FieldWrap';
-import Icon from '@/components/icon/Icon';
+import { Icon } from '@iconify/react';
 import Checkbox from '@/components/form/Checkbox';
 import Badge from '@/components/ui/Badge';
 import RichText from '@/components/RichText';
 import Radio, { RadioGroup } from '@/components/form/Radio';
 import useSaveBtn from '@/hooks/useSaveBtn';
-import { TIcons } from '@/types/icons.type';
 import useDarkMode from '@/hooks/useDarkMode';
 import { TDarkMode } from '@/types/darkMode.type';
 import usersDb, { TUser } from '@/mocks/db/users.db';
@@ -36,7 +35,7 @@ type TTab = {
 		| 'Sessions'
 		| 'Connected'
 		| 'Appearance';
-	icon: TIcons;
+	icon: string;
 };
 type TTabs = {
 	[key in
@@ -52,35 +51,35 @@ type TTabs = {
 const TAB: TTabs = {
 	EDIT: {
 		text: 'Edit Profile',
-		icon: 'HeroPencil',
+		icon: 'heroicons:pencil',
 	},
 	SOCIAL: {
 		text: 'Social',
-		icon: 'HeroGlobeAmericas',
+		icon: 'heroicons:globe-americas',
 	},
 	PASSWORD: {
 		text: 'Password',
-		icon: 'HeroKey',
+		icon: 'heroicons:key',
 	},
 	'2FA': {
 		text: '2FA',
-		icon: 'HeroShieldExclamation',
+		icon: 'heroicons:shield-exclamation',
 	},
 	NEWSLETTER: {
 		text: 'Newsletter',
-		icon: 'HeroBell',
+		icon: 'heroicons:bell',
 	},
 	SESSIONS: {
 		text: 'Sessions',
-		icon: 'HeroQueueList',
+		icon: 'heroicons:queue-list',
 	},
 	CONNECTED: {
 		text: 'Connected',
-		icon: 'HeroLink',
+		icon: 'heroicons:link',
 	},
 	APPEARANCE: {
 		text: 'Appearance',
-		icon: 'HeroSwatch',
+		icon: 'heroicons:swatch',
 	},
 };
 
@@ -167,7 +166,7 @@ const ProfileClient = () => {
 				</SubheaderLeft>
 				<SubheaderRight>
 					<Button
-						icon='HeroServer'
+						icon='heroicons:server'
 						variant='solid'
 						color={saveBtnColor}
 						isDisable={saveBtnDisable}
@@ -201,7 +200,7 @@ const ProfileClient = () => {
 									</div>
 								))}
 								<div className='border-zinc-500/25 dark:border-zinc-500/50 max-sm:border-s sm:border-t sm:pt-4'>
-									<Button icon='HeroTrash' color='red'>
+									<Button icon='heroicons:trash' color='red'>
 										Delete Account
 									</Button>
 								</div>
@@ -243,7 +242,7 @@ const ProfileClient = () => {
 												<Label htmlFor='username'>Username</Label>
 												<FieldWrap
 													firstSuffix={
-														<Icon icon='HeroUser' className='mx-2' />
+														<Icon icon='heroicons:user' className='mx-2' />
 													}>
 													<Input
 														id='username'
@@ -259,7 +258,7 @@ const ProfileClient = () => {
 												<FieldWrap
 													firstSuffix={
 														<Icon
-															icon='HeroEnvelope'
+															icon='heroicons:envelope'
 															className='mx-2'
 														/>
 													}>
@@ -327,13 +326,13 @@ const ProfileClient = () => {
 												<FieldWrap
 													firstSuffix={
 														<Icon
-															icon='HeroShieldCheck'
+															icon='heroicons:shield-check'
 															className='mx-2'
 														/>
 													}
 													lastSuffix={
 														<Icon
-															icon='HeroChevronDown'
+															icon='heroicons:chevron-down'
 															className='mx-2'
 														/>
 													}>
@@ -354,7 +353,7 @@ const ProfileClient = () => {
 												<FieldWrap
 													firstSuffix={
 														<Icon
-															icon='HeroBriefcase'
+															icon='heroicons:briefcase'
 															className='mx-2'
 														/>
 													}>
@@ -452,8 +451,8 @@ const ProfileClient = () => {
 															className='mx-2'
 															icon={
 																passwordShowStatus
-																	? 'HeroEyeSlash'
-																	: 'HeroEye'
+																	? 'heroicons:eye-slash'
+																	: 'heroicons:eye'
 															}
 															onClick={() => {
 																setPasswordShowStatus(
@@ -482,8 +481,8 @@ const ProfileClient = () => {
 															className='mx-2'
 															icon={
 																passwordNewShowStatus
-																	? 'HeroEyeSlash'
-																	: 'HeroEye'
+																	? 'heroicons:eye-slash'
+																	: 'heroicons:eye'
 															}
 															onClick={() => {
 																setPasswordNewShowStatus(
@@ -516,8 +515,8 @@ const ProfileClient = () => {
 															className='mx-2'
 															icon={
 																passwordNewConfShowStatus
-																	? 'HeroEyeSlash'
-																	: 'HeroEye'
+																	? 'heroicons:eye-slash'
+																	: 'heroicons:eye'
 															}
 															onClick={() => {
 																setPasswordNewConfShowStatus(
@@ -724,7 +723,7 @@ const ProfileClient = () => {
 													</Button>
 												</div>
 												<div className='flex flex-shrink-0 items-center gap-4'>
-													<Icon icon='CustomUSA' size='text-3xl' />
+													<Icon icon='emojione:flag-for-united-states' className='text-3xl' />
 													<Badge
 														variant='outline'
 														rounded='rounded-full'
@@ -750,7 +749,7 @@ const ProfileClient = () => {
 													</Button>
 												</div>
 												<div className='flex flex-shrink-0 items-center gap-4'>
-													<Icon icon='CustomUSA' size='text-3xl' />
+													<Icon icon='emojione:flag-for-united-states' className='text-3xl' />
 													<Badge
 														variant='outline'
 														rounded='rounded-full'
@@ -776,7 +775,7 @@ const ProfileClient = () => {
 													</Button>
 												</div>
 												<div className='flex flex-shrink-0 items-center gap-4'>
-													<Icon icon='CustomUSA' size='text-3xl' />
+													<Icon icon='emojione:flag-for-united-states' className='text-3xl' />
 													<Badge
 														variant='outline'
 														rounded='rounded-full'
@@ -802,7 +801,7 @@ const ProfileClient = () => {
 													</Button>
 												</div>
 												<div className='flex flex-shrink-0 items-center gap-4'>
-													<Icon icon='CustomUSA' size='text-3xl' />
+													<Icon icon='emojione:flag-for-united-states' className='text-3xl' />
 													<Badge
 														variant='outline'
 														rounded='rounded-full'
@@ -837,8 +836,8 @@ const ProfileClient = () => {
 																<Button
 																	icon={
 																		status
-																			? 'HeroTrash'
-																			: 'HeroCog8Tooth'
+																			? 'heroicons:trash'
+																			: 'heroicons:cog-8-tooth'
 																	}
 																	color={status ? 'red' : 'blue'}>
 																	{status ? 'Delete' : 'Set up'}
@@ -908,14 +907,14 @@ const ProfileClient = () => {
 					<CardFooter>
 						<CardFooterChild>
 							<div className='flex items-center gap-2'>
-								<Icon icon='HeroDocumentCheck' size='text-2xl' />
+								<Icon icon='heroicons:document-check' className='text-2xl' />
 								<span className='text-zinc-500'>Last saved:</span>
 								<b>{dayjs().locale(i18n.language).format('LLL')}</b>
 							</div>
 						</CardFooterChild>
 						<CardFooterChild>
 							<Button
-								icon='HeroServer'
+								icon='heroicons:server'
 								variant='solid'
 								color={saveBtnColor}
 								isDisable={saveBtnDisable}

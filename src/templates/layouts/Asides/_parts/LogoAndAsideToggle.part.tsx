@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Visible from '../../../../components/utils/Visible';
-import Icon from '../../../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 import useAsideStatus from '../../../../hooks/useAsideStatus';
 import LogoTemplate from '../../Logo/Logo.template';
 
@@ -20,7 +20,7 @@ const LogoAndAsideTogglePart = () => {
 				onClick={() => setAsideStatus(!asideStatus)}
 				className='flex h-12 w-12 items-center justify-center'>
 				<Icon
-					icon={asideStatus ? 'HeroBars3BottomLeft' : 'HeroBars3'}
+					icon={asideStatus ? 'heroicons:bars-3-bottom-left' : 'heroicons:bars-3'}
 					className='text-2xl'
 				/>
 			</button>

@@ -150,30 +150,30 @@ const RichText: FC<IRichTextProps> = (props) => {
 				onChange={handleChange}>
 				<Toolbar>
 					<ToolbarChild className='flex-wrap'>
-						<MarkButton format='bold' icon='DuoBold' />
-						<MarkButton format='italic' icon='DuoItalic' />
-						<MarkButton format='underline' icon='DuoUnderline' />
-						<MarkButton format='code' icon='DuoCode1' />
-						<BlockButton format='heading-one' icon='DuoH1' />
-						<BlockButton format='heading-two' icon='DuoH2' />
-						<BlockButton format='block-quote' icon='DuoQuote1' />
-						<BlockButton format='numbered-list' icon='DuoBulletList' />
-						<BlockButton format='bulleted-list' icon='DuoBulletList' />
-						<BlockButton format='left' icon='DuoAlignLeft' />
-						<BlockButton format='center' icon='DuoAlignCenter' />
-						<BlockButton format='right' icon='DuoAlignRight' />
-						<BlockButton format='justify' icon='DuoAlignJustify' />
+						<MarkButton format='bold' icon='material-symbols:format-bold' />
+						<MarkButton format='italic' icon='material-symbols:format-italic' />
+						<MarkButton format='underline' icon='material-symbols:format-underlined' />
+						<MarkButton format='code' icon='material-symbols:code' />
+						<BlockButton format='heading-one' icon='material-symbols:format-h1' />
+						<BlockButton format='heading-two' icon='material-symbols:format-h2' />
+						<BlockButton format='block-quote' icon='material-symbols:format-quote' />
+						<BlockButton format='numbered-list' icon='material-symbols:format-list-bulleted' />
+						<BlockButton format='bulleted-list' icon='material-symbols:format-list-bulleted' />
+						<BlockButton format='left' icon='material-symbols:format-align-left' />
+						<BlockButton format='center' icon='material-symbols:format-align-center' />
+						<BlockButton format='right' icon='material-symbols:format-align-right' />
+						<BlockButton format='justify' icon='material-symbols:format-align-justify' />
 					</ToolbarChild>
 					<ToolbarChild>
 						<Button
-							icon='DuoReply'
+							icon='material-symbols:undo'
 							onMouseDown={() => {
 								editor.undo();
 							}}
 							isDisable={!editor.history.undos.length}
 						/>
 						<Button
-							icon='DuoRedo'
+							icon='material-symbols:redo'
 							onMouseDown={() => {
 								editor.redo();
 							}}

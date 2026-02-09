@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavItem, NavSeparator } from '@/components/layouts/Navigation/Nav';
 import { authPages } from '@/config/pages.config';
-import Icon from '@/components/icon/Icon';
+import { Icon } from '@iconify/react';
 import Badge from '@/components/ui/Badge';
 import User from '@/components/layouts/User/User';
 import usersDb, { TUser } from '@/mocks/db/users.db';
@@ -20,7 +20,7 @@ const UserTemplate = () => {
 		<User
 			isLoading={false}
 			name={userData?.firstName}
-			nameSuffix={userData?.isVerified && <Icon icon='HeroCheckBadge' color='blue' />}
+			nameSuffix={userData?.isVerified && <Icon icon='heroicons:check-badge' className='text-blue-500' />}
 			position={userData?.position}
 			src={userData?.image?.thumb}
 			suffix={
@@ -30,7 +30,7 @@ const UserTemplate = () => {
 			}>
 			<NavSeparator />
 			<NavItem {...authPages.profilePage} />
-			<NavItem text='Logout' icon='HeroArrowRightOnRectangle' onClick={handleLogout} />
+			<NavItem text='Logout' icon='heroicons:arrow-right-on-rectangle' onClick={handleLogout} />
 		</User>
 	);
 };

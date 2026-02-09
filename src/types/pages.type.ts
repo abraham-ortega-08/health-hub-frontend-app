@@ -1,5 +1,3 @@
-import { TIcons } from './icons.type';
-
 export type TPage = {
 	id: string;
 	to: string;
@@ -7,7 +5,7 @@ export type TPage = {
 	 * text: can also be used as an i18n key
 	 */
 	text: string;
-	icon: TIcons;
+	icon: string;
 };
 
 export type TPages = {

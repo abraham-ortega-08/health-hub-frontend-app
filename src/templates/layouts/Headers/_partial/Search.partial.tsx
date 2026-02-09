@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { appPages } from '@/config/pages.config';
-import Icon from '../../../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 import Button from '../../../../components/ui/Button';
 import Input from '../../../../components/form/Input';
 import FieldWrap from '../../../../components/form/FieldWrap';

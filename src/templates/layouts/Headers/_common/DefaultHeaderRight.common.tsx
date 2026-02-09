@@ -9,7 +9,7 @@ const DefaultHeaderRightCommon = () => {
 		<>
 			<SettingsPartial />
 			<Mounted
-				fallback={<Button icon='HeroLanguage' aria-label='Select Language' isDisable />}>
+				fallback={<Button icon='heroicons:language' aria-label='Select Language' isDisable />}>
 				<LanguageSelectorPartial />
 			</Mounted>
 		</>

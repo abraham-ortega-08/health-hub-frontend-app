@@ -13,7 +13,7 @@ import Dropdown, {
 } from '../../../../components/ui/Dropdown';
 import Button from '../../../../components/ui/Button';
 import LANG from '../../../../constants/lang.constant';
-import Icon from '../../../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 import i18nConfig from '../../../../../i18nConfig';
 
 const LanguageSelectorPartial = () => {
@@ -84,7 +84,7 @@ const LanguageSelectorPartial = () => {
 	return (
 		<Dropdown>
 			<DropdownToggle hasIcon={false}>
-				<Button icon='HeroLanguage' aria-label='Select Language' />
+				<Button icon='heroicons:language' aria-label='Select Language' />
 			</DropdownToggle>
 			<DropdownMenu placement='bottom-end'>
 				{langArray.map((item) => (
@@ -93,7 +93,7 @@ const LanguageSelectorPartial = () => {
 						key={item.lng}
 						// onClick={() => setLanguage(item.lng)}
 						onClick={() => handleChange(item.lng)}>
-						<Icon icon={item.icon} size='text-2xl' className='ltr:mr-2 rtl:ml-2' />
+						<Icon icon={item.icon} className='text-2xl ltr:mr-2 rtl:ml-2' />
 						{item.text}
 					</DropdownItem>
 				))}

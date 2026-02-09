@@ -4,7 +4,7 @@ import { flexRender, Table as TTableProps } from '@tanstack/react-table';
 import { CardFooter, CardFooterChild } from '@/components/ui/Card';
 import Mounted from '@/components/Mounted';
 import Table, { ITableProps, TBody, Td, TFoot, Th, THead, Tr } from '../../components/ui/Table';
-import Icon from '../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 import Button from '../../components/ui/Button';
 import Input from '../../components/form/Input';
 import Select from '../../components/form/Select';
@@ -43,13 +43,13 @@ export const TableHeaderTemplate: FC<ITableHeaderTemplateProps> = ({ table }) =>
 									{{
 										asc: (
 											<Icon
-												icon='HeroChevronUp'
+												icon='heroicons:chevron-up'
 												className='ltr:ml-1.5 rtl:mr-1.5'
 											/>
 										),
 										desc: (
 											<Icon
-												icon='HeroChevronDown'
+												icon='heroicons:chevron-down'
 												className='ltr:ml-1.5 rtl:mr-1.5'
 											/>
 										),
@@ -123,13 +123,13 @@ export const TableFooterTemplate: FC<ITableFooterTemplateProps> = ({ table }) =>
 									{{
 										asc: (
 											<Icon
-												icon='HeroChevronUp'
+												icon='heroicons:chevron-up'
 												className='ltr:ml-1.5 rtl:mr-1.5'
 											/>
 										),
 										desc: (
 											<Icon
-												icon='HeroChevronDown'
+												icon='heroicons:chevron-down'
 												className='ltr:ml-1.5 rtl:mr-1.5'
 											/>
 										),
@@ -194,13 +194,13 @@ export const TableCardFooterTemplate: FC<ITableCardFooterTemplateProps> = ({ tab
 				<Button
 					onClick={() => table.setPageIndex(0)}
 					isDisable={!table.getCanPreviousPage()}
-					icon='HeroChevronDoubleLeft'
+					icon='heroicons:chevron-double-left'
 					className='!px-0'
 				/>
 				<Button
 					onClick={() => table.previousPage()}
 					isDisable={!table.getCanPreviousPage()}
-					icon='HeroChevronLeft'
+					icon='heroicons:chevron-left'
 					className='!px-0'
 				/>
 				<span className='flex items-center gap-1'>
@@ -221,13 +221,13 @@ export const TableCardFooterTemplate: FC<ITableCardFooterTemplateProps> = ({ tab
 				<Button
 					onClick={() => table.nextPage()}
 					isDisable={!table.getCanNextPage()}
-					icon='HeroChevronRight'
+					icon='heroicons:chevron-right'
 					className='!px-0'
 				/>
 				<Button
 					onClick={() => table.setPageIndex(table.getPageCount() - 1)}
 					isDisable={!table.getCanNextPage()}
-					icon='HeroChevronDoubleRight'
+					icon='heroicons:chevron-double-right'
 					className='!px-0'
 				/>
 			</CardFooterChild>

@@ -24,7 +24,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 	return (
 		<div className='flex items-center justify-center gap-2'>
 			<Button
-				icon='HeroChevronLeft'
+				icon='heroicons:chevron-left'
 				variant='outline'
 				size='sm'
 				isDisable={!hasPrevious}
@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 			))}
 
 			<Button
-				icon='HeroChevronRight'
+				icon='heroicons:chevron-right'
 				variant='outline'
 				size='sm'
 				isDisable={!hasNext}
