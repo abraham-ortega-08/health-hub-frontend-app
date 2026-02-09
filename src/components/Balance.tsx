@@ -1,26 +1,30 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { TRounded } from '@/types/rounded.type';
-import Icon, { IIconProps } from './icon/Icon';
+import { Icon } from '@iconify/react';
 import themeConfig from '../config/theme.config';
 
-interface IBalanceIconProps extends Partial<IIconProps> {
+interface IBalanceIconProps {
 	status?: 'positive' | 'negative' | 'fixed';
+	className?: string;
 }
 export const BalanceIcon: FC<IBalanceIconProps> = (props) => {
-	const { status = 'fixed', ...rest } = props;
+	const { status = 'fixed', className } = props;
 	return (
 		<Icon
-			color={
-				(status === 'positive' && 'emerald') || (status === 'negative' && 'red') || 'blue'
-			}
-			size='text-2xl'
-			// eslint-disable-next-line react/jsx-props-no-spreading
-			{...rest}
+			className={classNames(
+				'text-2xl',
+				{
+					'text-emerald-500': status === 'positive',
+					'text-red-500': status === 'negative',
+					'text-blue-500': status === 'fixed',
+				},
+				className
+			)}
 			icon={
-				(status === 'positive' && 'HeroArrowTrendingUp') ||
-				(status === 'negative' && 'HeroArrowTrendingDown') ||
-				'HeroArrowsRightLeft'
+				(status === 'positive' && 'heroicons:arrow-trending-up') ||
+				(status === 'negative' && 'heroicons:arrow-trending-down') ||
+				'heroicons:arrows-right-left'
 			}
 		/>
 	);

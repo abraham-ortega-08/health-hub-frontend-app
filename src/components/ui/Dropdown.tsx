@@ -21,12 +21,11 @@ import { TBorderWidth } from '@/types/borderWidth.type';
 import { TRounded } from '@/types/rounded.type';
 import { TColors } from '@/types/colors.type';
 import { TColorIntensity } from '@/types/colorIntensities.type';
-import { TIcons } from '@/types/icons.type';
 import { usePathname, useRouter } from 'next/navigation';
 import themeConfig from '@/config/theme.config';
 import useOnClickOutside from '@/hooks/useOnClickOutside';
 import { IButtonProps } from '@/components/ui/Button';
-import Icon from '@/components/icon/Icon';
+import { Icon } from '@iconify/react';
 
 export interface IDropdownProps extends HTMLAttributes<HTMLElement> {
 	children: ReactElement<IDropdownToggleProps>[] | ReactElement<IDropdownMenuProps>[];
@@ -208,8 +207,8 @@ interface IDropdownItemProps extends HTMLAttributes<HTMLLIElement> {
 	color?: TColors;
 	colorIntensity?: TColorIntensity;
 	isActive?: boolean;
-	icon?: TIcons;
-	rightIcon?: TIcons;
+	icon?: string;
+	rightIcon?: string;
 }
 export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>((props, ref) => {
 	const {

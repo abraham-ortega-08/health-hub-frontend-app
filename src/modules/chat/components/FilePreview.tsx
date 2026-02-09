@@ -21,7 +21,7 @@ const FilePreview: FC<FilePreviewProps> = ({ files, onRemove, onClearAll }) => {
 					size='xs'
 					variant='outline'
 					onClick={onClearAll}
-					icon='HeroXMark'>
+					icon='heroicons:x-mark'>
 					Clear all
 				</Button>
 			</div>

@@ -1,18 +1,17 @@
 'use client';
 
 import React, { FC, ReactNode } from 'react';
-import { TIcons } from '@/types/icons.type';
 import { StaticImageData } from 'next/image';
 import Dropdown, { DropdownMenu, DropdownToggle } from '../../../../components/ui/Dropdown';
 import Button from '../../../../components/ui/Button';
 import Avatar from '../../../../components/Avatar';
 import usersDb from '../../../../mocks/db/users.db';
-import Icon from '../../../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 
 interface INotificationItemProps {
 	image?: string | StaticImageData;
 	name: string;
-	icon?: TIcons;
+	icon?: string;
 	firstLine: ReactNode;
 	secondLine: ReactNode;
 	isUnread: boolean;
@@ -59,7 +58,7 @@ const NotificationPartial = () => {
 		<div className='relative'>
 			<Dropdown>
 				<DropdownToggle hasIcon={false}>
-					<Button icon='HeroBell' aria-label='Notification' />
+					<Button icon='heroicons:bell' aria-label='Notification' />
 				</DropdownToggle>
 				<DropdownMenu
 					placement='bottom-end'
@@ -67,7 +66,7 @@ const NotificationPartial = () => {
 					<NotificationItem
 						image={usersDb[0].image?.thumb}
 						name={`${usersDb[0].firstName} ${usersDb[0].lastName}`}
-						icon='HeroBolt'
+						icon='heroicons:bolt'
 						firstLine={
 							<>
 								<b>{usersDb[0].firstName}</b>
@@ -85,7 +84,7 @@ const NotificationPartial = () => {
 					<NotificationItem
 						image={usersDb[2].image?.thumb}
 						name={`${usersDb[2].firstName} ${usersDb[2].lastName}`}
-						icon='HeroBolt'
+						icon='heroicons:bolt'
 						firstLine={
 							<>
 								<b>{usersDb[2].firstName}</b>

@@ -18,20 +18,20 @@ const SettingsPartial = () => {
 	return (
 		<Dropdown>
 			<DropdownToggle hasIcon={false}>
-				<Button icon='HeroCog8Tooth' aria-label='Settings' />
+				<Button icon='heroicons:cog-8-tooth' aria-label='Settings' />
 			</DropdownToggle>
 			<DropdownMenu placement='bottom-end'>
 				<DropdownItem className='flex flex-col !items-start'>
 					<div>Font Size:</div>
 					<ButtonGroup>
 						<Button
-							icon='HeroMinus'
+							icon='heroicons:minus'
 							onClick={() => setFontSize(fontSize - 1)}
 							isDisable={fontSize <= 12}
 						/>
 						<Button isDisable>{fontSize}</Button>
 						<Button
-							icon='HeroPlus'
+							icon='heroicons:plus'
 							onClick={() => setFontSize(fontSize + 1)}
 							isDisable={fontSize >= 18}
 						/>
@@ -41,17 +41,17 @@ const SettingsPartial = () => {
 					<div>Dark Mode:</div>
 					<ButtonGroup>
 						<Button
-							icon='HeroMoon'
+							icon='heroicons:moon'
 							onClick={() => setDarkModeStatus(DARK_MODE.DARK)}
 							isActive={darkModeStatus === DARK_MODE.DARK}
 						/>
 						<Button
-							icon='HeroSun'
+							icon='heroicons:sun'
 							onClick={() => setDarkModeStatus(DARK_MODE.LIGHT)}
 							isActive={darkModeStatus === DARK_MODE.LIGHT}
 						/>
 						<Button
-							icon='HeroComputerDesktop'
+							icon='heroicons:computer-desktop'
 							onClick={() => setDarkModeStatus(DARK_MODE.SYSTEM)}
 							isActive={darkModeStatus === DARK_MODE.SYSTEM}
 						/>

@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames';
 import Card, { CardBody, CardHeader, CardHeaderChild, CardTitle } from '../../components/ui/Card';
-import Icon from '../../components/icon/Icon';
+import { Icon } from '@iconify/react';
 
 interface IDocContentProps {
 	children: ReactNode;
@@ -43,7 +43,7 @@ export const DocNav = forwardRef<HTMLDivElement, IDocNavProps>((props, ref) => {
 				<CardHeader>
 					<CardHeaderChild>
 						<CardTitle className='gap-4'>
-							<Icon icon='HeroRocketLaunch' />
+							<Icon icon='heroicons:rocket-launch' />
 							Quick Menu
 						</CardTitle>
 					</CardHeaderChild>

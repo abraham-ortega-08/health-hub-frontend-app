@@ -3,11 +3,10 @@ import classNames from 'classnames';
 import { TColors } from '@/types/colors.type';
 import { TColorIntensity } from '@/types/colorIntensities.type';
 import { TRounded } from '@/types/rounded.type';
-import { TIcons } from '@/types/icons.type';
 import { TBorderWidth } from '@/types/borderWidth.type';
 import themeConfig from '@/config/theme.config';
 import useColorIntensity from '@/hooks/useColorIntensity';
-import Icon from '../icon/Icon';
+import { Icon } from '@iconify/react';
 
 export type TButtonVariants = 'solid' | 'outline' | 'default';
 export type TButtonSize = 'xs' | 'sm' | 'default' | 'lg' | 'xl';
@@ -18,11 +17,11 @@ export interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	color?: TColors;
 	colorIntensity?: TColorIntensity;
-	icon?: TIcons;
+	icon?: string;
 	isActive?: boolean;
 	isDisable?: boolean;
 	isLoading?: boolean;
-	rightIcon?: TIcons;
+	rightIcon?: string;
 	rounded?: TRounded;
 	size?: TButtonSize;
 	variant?: TButtonVariants;
@@ -205,8 +204,8 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) => {
 		<button ref={ref} data-component-name='Button' type='button' className={classes} {...rest}>
 			{(!!icon || isLoading) && (
 				<Icon
-					icon={isLoading ? 'DuoLoading' : (icon as TIcons)}
-					className={classNames({ 'animate-spin': isLoading }, btnIconClasses)}
+					icon={isLoading ? 'svg-spinners:ring-resize' : icon!}
+					className={classNames(btnIconClasses)}
 				/>
 			)}
 			{children}

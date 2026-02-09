@@ -58,7 +58,7 @@ const ChatInput: FC<ChatInputProps> = ({
 			<FieldWrap
 				firstSuffix={
 					<Button
-						icon='HeroPlus'
+						icon='heroicons:plus'
 						variant={message.trim() ? 'default' : 'solid'}
 						rounded='rounded'
 						className='me-2'
@@ -73,7 +73,7 @@ const ChatInput: FC<ChatInputProps> = ({
 							className='ms-2'
 							variant='solid'
 							rounded='rounded'
-							icon='HeroPaperAirplane'
+							icon='heroicons:paper-airplane'
 							onClick={handleSend}
 							isDisable={disabled}>
 							Send

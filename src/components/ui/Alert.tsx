@@ -4,12 +4,11 @@ import React, { FC, HTMLAttributes, ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { TColors } from '@/types/colors.type';
 import { TColorIntensity } from '@/types/colorIntensities.type';
-import { TIcons } from '@/types/icons.type';
 import { TFontSizes } from '@/types/fontSizes.type';
 import { TRounded } from '@/types/rounded.type';
 import { TBorderWidth } from '@/types/borderWidth.type';
 import useColorIntensity from '@/hooks/useColorIntensity';
-import Icon from '@/components/icon/Icon';
+import { Icon } from '@iconify/react';
 import themeConfig from '@/config/theme.config';
 import CloseButton from '@/components/ui/CloseButton';
 
@@ -21,7 +20,7 @@ interface IAlertProps extends HTMLAttributes<HTMLDivElement> {
 	className?: string;
 	color?: TColors;
 	colorIntensity?: TColorIntensity;
-	icon?: TIcons;
+	icon?: string;
 	iconSize?: TFontSizes;
 	isClosable?: boolean;
 	rounded?: TRounded;
@@ -78,8 +77,7 @@ const Alert: FC<IAlertProps> = (props) => {
 				{icon && (
 					<Icon
 						icon={icon}
-						className='shrink-0 self-center ltr:mr-4 rtl:ml-4'
-						size={iconSize}
+						className={classNames('shrink-0 self-center ltr:mr-4 rtl:ml-4', iconSize)}
 					/>
 				)}
 				<div className='w-full grow self-center'>

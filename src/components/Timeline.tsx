@@ -1,20 +1,19 @@
 import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { TIcons } from '@/types/icons.type';
 import { TColors } from '@/types/colors.type';
 import { TColorIntensity } from '@/types/colorIntensities.type';
 import Image, { StaticImageData } from 'next/image';
-import Icon from './icon/Icon';
+import { Icon } from '@iconify/react';
 
 interface ITimelineItemProps {
 	children: ReactNode;
-	icon?: TIcons;
+	icon?: string;
 	image?: string | StaticImageData;
 	color?: TColors;
 	colorShade?: TColorIntensity;
 }
 export const TimelineItem: FC<ITimelineItemProps> = (props) => {
-	const { children, icon = 'HeroHashtag', image, color, colorShade, ...rest } = props;
+	const { children, icon = 'heroicons:hashtag', image, color, colorShade, ...rest } = props;
 	return (
 		<div data-component-name='TimelineItem' className='flex gap-4' {...rest}>
 			<div data-component-name='icon line' className='flex w-8 flex-col items-center'>
@@ -28,9 +27,10 @@ export const TimelineItem: FC<ITimelineItemProps> = (props) => {
 					) : (
 						<Icon
 							icon={icon}
-							size='text-2xl'
-							color={color}
-							colorIntensity={colorShade}
+							className={classNames(
+								'text-2xl',
+								color && `text-${color}-${colorShade || '500'}`
+							)}
 						/>
 					)}
 				</div>

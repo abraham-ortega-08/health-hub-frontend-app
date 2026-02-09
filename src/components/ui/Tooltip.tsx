@@ -4,7 +4,7 @@ import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useSt
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
 import * as PopperJS from '@popperjs/core';
-import Icon from '../icon/Icon';
+import { Icon } from '@iconify/react';
 import Portal from '../layouts/Portal/Portal';
 import { TBorderWidth } from '../../types/borderWidth.type';
 import { TRounded } from '../../types/rounded.type';
@@ -59,7 +59,7 @@ const Tooltip: FC<ITooltipProps> = (props) => {
 					{...REFERENCE_PROPS}>
 					{children || (
 						<Icon
-							icon='HeroInformationCircle'
+							icon='heroicons:information-circle'
 							className={classNames('inline-flex', className)}
 						/>
 					)}

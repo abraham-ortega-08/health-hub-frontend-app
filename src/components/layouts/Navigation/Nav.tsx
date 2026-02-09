@@ -3,7 +3,6 @@
 import React, { FC, HTMLAttributes, ReactNode, useEffect, useId, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { TIcons } from '@/types/icons.type';
 import { TColors } from '@/types/colors.type';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -12,7 +11,7 @@ import TranslationsProvider from '@/components/TranslationsProvider';
 import { useTranslation } from 'react-i18next';
 import { StaticImageData } from 'next/image';
 import purePathnameUtil from '@/utils/purePathname.util';
-import Icon, { IIconProps } from '../../icon/Icon';
+import { Icon } from '@iconify/react';
 import useAsideStatus from '../../../hooks/useAsideStatus';
 import themeConfig from '../../../config/theme.config';
 import Tooltip from '../../ui/Tooltip';
@@ -106,12 +105,12 @@ const NavItemContent: FC<INavItemContentProps> = (props) => {
 };
 NavItemContent.displayName = 'NavItemContent';
 
-interface INavIconProps extends Partial<IIconProps> {
-	icon?: TIcons;
+interface INavIconProps {
+	icon?: string;
 	className?: string;
 }
 const NavIcon: FC<INavIconProps> = (props) => {
-	const { className, icon = 'HeroMinus' } = props;
+	const { className, icon = 'heroicons:minus' } = props;
 
 	const { asideStatus } = useAsideStatus();
 
@@ -133,7 +132,7 @@ NavIcon.displayName = 'NavIcon';
 
 interface INavButtonProps extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
-	icon: TIcons;
+	icon: string;
 	iconColor?: TColors;
 	iconClassName?: string;
 	title: string;
@@ -149,11 +148,11 @@ export const NavButton: FC<INavButtonProps> = (props) => {
 			{...rest}>
 			<Icon
 				icon={icon}
-				color={iconColor}
-				size='text-2xl'
 				className={classNames(
+					'text-2xl',
 					{
 						'text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-100': !iconColor,
+						[`text-${iconColor}-500`]: iconColor,
 					},
 					themeConfig.transition,
 					iconClassName,
@@ -166,7 +165,7 @@ NavButton.displayName = 'NavButton';
 
 interface INavItemProps extends HTMLAttributes<HTMLLIElement> {
 	children?: ReactNode;
-	icon?: TIcons;
+	icon?: string;
 	text: string;
 	to?: string;
 	className?: string;
@@ -276,7 +275,7 @@ NavItem.displayName = 'NavItem';
 
 interface INavCollapseProps extends HTMLAttributes<HTMLLIElement> {
 	children: ReactNode;
-	icon?: TIcons;
+	icon?: string;
 	text: string;
 	to: string;
 	className?: string;
@@ -320,7 +319,7 @@ export const NavCollapse: FC<INavCollapseProps> = (props) => {
 						<NavItemText>{t(text)}</NavItemText>
 						<div>
 							<Icon
-								icon='HeroChevronDown'
+								icon='heroicons:chevron-down'
 								className={classNames(
 									'text-2xl',
 									{

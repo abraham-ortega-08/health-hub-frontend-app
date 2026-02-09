@@ -2,7 +2,7 @@
 
 import React, { FC, HTMLAttributes, ReactNode, useRef } from 'react';
 import classNames from 'classnames';
-import Icon from '../../icon/Icon';
+import { Icon } from '@iconify/react';
 import useAsideStatus from '../../../hooks/useAsideStatus';
 import useDomRect from '../../../hooks/useDomRect';
 
@@ -30,7 +30,7 @@ export const HeaderLeft: FC<IHeaderLeftProps> = (props) => {
 				onClick={() => setAsideStatus(!asideStatus)}
 				className='flex h-12 w-12 items-center justify-center md:hidden'>
 				<Icon
-					icon={asideStatus ? 'HeroBars3BottomLeft' : 'HeroBars3'}
+					icon={asideStatus ? 'heroicons:bars-3-bottom-left' : 'heroicons:bars-3'}
 					className='text-2xl'
 				/>
 			</button>
