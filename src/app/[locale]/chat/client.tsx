@@ -43,7 +43,7 @@ const AiDashboardClient = () => {
 										</div>
 									</ChatMessage>
 								)}
-								<div ref={messagesEndRef} className='h-20' />
+								<div ref={messagesEndRef} className='h-32' />
 							</>
 						) : (
 							<div className='col-span-12 my-20'>
