@@ -26,6 +26,8 @@
 	"Reservation": "Reservation",
 	"Mail": "Mail",
 	"Chat": "Chat",
+	"Agents": "Agents",
+	"Knowledge Base": "Knowledge Base",
 	"DemoPages": "Demo pages TEST",
 	"item": {
 		"itemA": "Item A",

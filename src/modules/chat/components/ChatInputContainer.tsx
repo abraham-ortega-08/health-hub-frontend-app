@@ -7,7 +7,7 @@ interface ChatInputContainerProps {
 
 const ChatInputContainer: FC<ChatInputContainerProps> = ({ children }) => {
 	return (
-		<div className='sticky bottom-0 z-20 flex bg-zinc-100/75 pb-4 backdrop-blur-md dark:bg-zinc-950/75'>
+		<div className='sticky bottom-0 z-20 flex bg-zinc-100/75 pb-6 backdrop-blur-md dark:bg-zinc-950/75'>
 			<div className='grid w-full grid-cols-12 gap-4'>
 				<div className='col-span-12'>
 					<Card>

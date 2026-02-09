@@ -3,15 +3,15 @@
 import React from 'react';
 import Subheader, { SubheaderRight } from '@/components/layouts/Subheader/Subheader';
 import Button from '@/components/ui/Button';
-import { useChatStore } from '@/modules/chat';
+import { useChatStore } from '../store';
 
-const AiSubheaderPartial = () => {
+const ChatSubheader = () => {
 	const { createSession } = useChatStore();
 
 	return (
 		<Subheader>
 			<SubheaderRight>
-				<Button variant='solid' icon='HeroPlus' onClick={createSession}>
+				<Button variant='solid' icon='heroicons:plus' onClick={createSession}>
 					New Chat
 				</Button>
 			</SubheaderRight>
@@ -19,4 +19,4 @@ const AiSubheaderPartial = () => {
 	);
 };
 
-export default AiSubheaderPartial;
+export default ChatSubheader;

@@ -4,9 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import PageWrapper from '@/components/layouts/PageWrapper/PageWrapper';
 import Container from '@/components/layouts/Container/Container';
 import classNames from 'classnames';
-import AiSubheaderPartial from '../_partial/AiSubheader.partial';
 import LoaderDotsCommon from '@/components/LoaderDots.common';
-import { useChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer } from '@/modules/chat';
+import { useChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer, ChatSubheader } from '@/modules/chat';
 
 const AiDashboardClient = () => {
 	const { currentSession, sendMessage, isLoading, selectedFiles, addFiles, removeFile, clearFiles } = useChat();
@@ -23,7 +22,7 @@ const AiDashboardClient = () => {
 
 	return (
 		<PageWrapper>
-			<AiSubheaderPartial />
+			<ChatSubheader />
 			<Container className='flex shrink-0 grow basis-auto flex-col pb-0 overflow-hidden'>
 				<div ref={containerRef} className='flex-1 overflow-y-auto pb-6'>
 					<ChatContainer>
@@ -44,7 +43,7 @@ const AiDashboardClient = () => {
 										</div>
 									</ChatMessage>
 								)}
-								<div ref={messagesEndRef} className='h-20' />
+								<div ref={messagesEndRef} className='h-32' />
 							</>
 						) : (
 							<div className='col-span-12 my-20'>

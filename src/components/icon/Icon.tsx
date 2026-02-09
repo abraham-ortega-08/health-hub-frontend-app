@@ -1,6 +1,7 @@
 import React, { forwardRef, HTMLAttributes, memo, ReactNode } from 'react';
 import classNames from 'classnames';
 import pascalcase from 'pascalcase';
+import { Icon as IconifyIcon } from '@iconify/react';
 import * as SvgIcon from './svg-icons';
 import * as DuoToneIcon from './duotone';
 import * as HeroIcon from './heroicons';
@@ -37,6 +38,31 @@ export interface IIconProps extends HTMLAttributes<HTMLSpanElement> {
 }
 const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 	const { icon, className, color, colorIntensity, size, ...rest } = props;
+	
+	const CLASS_NAMES = classNames(
+		'svg-icon',
+		{ [`${size as TFontSizes}`]: typeof size !== 'undefined' },
+		textColor(color, colorIntensity),
+		className,
+	);
+
+	// Check if it's an Iconify icon (contains ':' like 'heroicons:chat-bubble-bottom-center-text')
+	if (icon.includes(':')) {
+		return (
+			<RefWrapper ref={ref}>
+				<IconifyIcon
+					icon={icon}
+					data-component-name='Icon-Iconify'
+					data-name={`Iconify--${icon}`}
+					className={CLASS_NAMES}
+					// eslint-disable-next-line react/jsx-props-no-spreading
+					{...rest}
+				/>
+			</RefWrapper>
+		);
+	}
+
+	// Legacy support for old icon system
 	const IconName = pascalcase(icon);
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -51,13 +77,6 @@ const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 	// @ts-ignore
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const HeroWrapper = HeroIcon[IconName];
-
-	const CLASS_NAMES = classNames(
-		'svg-icon',
-		{ [`${size as TFontSizes}`]: typeof size !== 'undefined' },
-		textColor(color, colorIntensity),
-		className,
-	);
 
 	if (typeof SvgIconWrapper === 'function') {
 		return (

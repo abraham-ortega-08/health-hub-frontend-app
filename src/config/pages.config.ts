@@ -3,13 +3,19 @@ export const appPages = {
 		id: 'aiApp',
 		to: '/ai',
 		text: 'AI',
-		icon: 'HeroRocketLaunch',
+		icon: 'heroicons:rocket-launch',
 		subPages: {
-			aiDashboardPage: {
-				id: 'aiDashboardPage',
-				to: '/ai/dashboard',
-				text: 'AI Dashboard',
-				icon: 'HeroRocketLaunch',
+			aiChatPage: {
+				id: 'aiChatPage',
+				to: '/chat',
+				text: 'Chat',
+				icon: 'heroicons:chat-bubble-bottom-center-text',
+			},
+			aiAgentsPage: {
+				id: 'aiAgentsPage',
+				to: '/agents',
+				text: 'Agents',
+				icon: 'heroicons:cpu-chip',
 			},
 		},
 	},
@@ -17,7 +23,7 @@ export const appPages = {
 		id: 'knowledgePage',
 		to: '/knowledge',
 		text: 'Knowledge Base',
-		icon: 'HeroBookOpen',
+		icon: 'heroicons:book-open',
 	},
 };
 
@@ -29,13 +35,13 @@ export const authPages = {
 		id: 'loginPage',
 		to: '/login',
 		text: 'Login',
-		icon: 'HeroArrowRightOnRectangle',
+		icon: 'heroicons:arrow-right-on-rectangle',
 	},
 	profilePage: {
 		id: 'profilePage',
 		to: '/profile',
 		text: 'Profile',
-		icon: 'HeroUser',
+		icon: 'heroicons:user',
 	},
 };
 

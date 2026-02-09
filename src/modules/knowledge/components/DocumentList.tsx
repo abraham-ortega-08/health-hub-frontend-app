@@ -1,10 +1,15 @@
 'use client';
 
 import React from 'react';
+import {
+	DocumentList as SharedDocumentList,
+	Document as SharedDocument,
+	formatDocumentDate,
+	getDocumentTypeBadgeColor,
+	getDocumentTypeLabel,
+} from '@/components/documents';
 import { Document } from '../types';
-import { DocumentCard } from './DocumentListItem';
-import { DocumentListLoading } from './DocumentListLoading';
-import { DocumentListEmpty } from './DocumentListEmpty';
+import { useDelete } from '../hooks';
 
 interface DocumentListProps {
 	documents: Document[];
@@ -19,24 +24,26 @@ export const DocumentList: React.FC<DocumentListProps> = ({
 	selectedIds = [],
 	onToggleSelect,
 }) => {
-	if (isLoading) {
-		return <DocumentListLoading />;
-	}
+	const { isDeleting, deletingId, deleteDocument } = useDelete();
 
-	if (documents.length === 0) {
-		return <DocumentListEmpty />;
-	}
+	const handleDelete = async (id: string) => {
+		await deleteDocument(id);
+	};
+
+	// Convert Document to SharedDocument
+	const sharedDocuments: SharedDocument[] = documents;
 
 	return (
-		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-			{documents.map((document) => (
-				<DocumentCard
-					key={document.id}
-					document={document}
-					isSelected={selectedIds.includes(document.id)}
-					onToggleSelect={onToggleSelect}
-				/>
-			))}
-		</div>
+		<SharedDocumentList
+			documents={sharedDocuments}
+			isLoading={isLoading}
+			selectedIds={selectedIds}
+			onToggleSelect={onToggleSelect}
+			onDelete={handleDelete}
+			isDeletingId={deletingId}
+			formatDate={formatDocumentDate}
+			getTypeBadgeColor={getDocumentTypeBadgeColor}
+			getTypeLabel={getDocumentTypeLabel}
+		/>
 	);
 };
