@@ -1,4 +1,4 @@
-import AiAgentsClient from "./client";
+import AiAgentsClient from '@/app/[locale]/agents/client';
 
 const AiAgents = () => {
 	return <AiAgentsClient />;

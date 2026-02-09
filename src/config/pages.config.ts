@@ -7,13 +7,13 @@ export const appPages = {
 		subPages: {
 			aiChatPage: {
 				id: 'aiChatPage',
-				to: '/ai/chat',
+				to: '/chat',
 				text: 'Chat',
 				icon: 'heroicons:chat-bubble-bottom-center-text',
 			},
 			aiAgentsPage: {
 				id: 'aiAgentsPage',
-				to: '/ai/agents',
+				to: '/agents',
 				text: 'Agents',
 				icon: 'heroicons:cpu-chip',
 			},

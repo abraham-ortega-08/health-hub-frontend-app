@@ -5,7 +5,7 @@ import PageWrapper from '@/components/layouts/PageWrapper/PageWrapper';
 import Container from '@/components/layouts/Container/Container';
 import classNames from 'classnames';
 import LoaderDotsCommon from '@/components/LoaderDots.common';
-import { useChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer, ChatSubheader } from '@/modules/ai/chat';
+import { useChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer, ChatSubheader } from '@/modules/chat';
 
 const AiDashboardClient = () => {
 	const { currentSession, sendMessage, isLoading, selectedFiles, addFiles, removeFile, clearFiles } = useChat();
