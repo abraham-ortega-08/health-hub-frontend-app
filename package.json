@@ -8,8 +8,7 @@
 		"start": "next start",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"prettier:fix": "prettier --write .",
-		"icon": "svgr SvgIcons -d src/components/icon/svg-icons --typescript --no-prettier"
+		"prettier:fix": "prettier --write ."
 	},
 	"dependencies": {
 		"@fullcalendar/core": "^6.1.19",
@@ -41,7 +40,6 @@
 		"lodash": "^4.17.21",
 		"next": "^16.1.6",
 		"next-i18n-router": "^5.5.5",
-		"pascalcase": "^2.0.0",
 		"react": "^19.2.0",
 		"react-apexcharts": "^1.9.0",
 		"react-date-range": "^2.0.1",
@@ -71,14 +69,12 @@
 		"@eslint/compat": "^2.0.0",
 		"@eslint/js": "^9.39.1",
 		"@next/eslint-plugin-next": "^16.0.6",
-		"@svgr/cli": "^8.1.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@types/d3-fetch": "^3.0.7",
 		"@types/d3-scale": "^4.0.9",
 		"@types/is-hotkey": "^0.1.10",
 		"@types/lodash": "^4.17.21",
 		"@types/node": "latest",
-		"@types/pascalcase": "^1.0.3",
 		"@types/react": "latest",
 		"@types/react-date-range": "^1.4.10",
 		"@types/react-dom": "latest",
