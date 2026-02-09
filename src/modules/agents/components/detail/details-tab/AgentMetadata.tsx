@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Agent } from '../../types';
+import { Agent } from '../../../types';
 
 interface AgentMetadataProps {
 	createdBy: Agent['created_by'];

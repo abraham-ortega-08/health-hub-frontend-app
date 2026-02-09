@@ -1,6 +1,12 @@
 import api from '@/services/axios';
 import { useQuery } from '@tanstack/react-query';
-import { AgentsResponse, AgentsQueryParams, Agent } from '../types';
+import {
+	AgentsResponse,
+	AgentsQueryParams,
+	Agent,
+	AgentDocumentsResponse,
+	AgentDocumentsQueryParams,
+} from '../types';
 
 export const useAgents = (params?: AgentsQueryParams) => {
 	return useQuery<AgentsResponse>({
@@ -14,5 +20,13 @@ export const useAgent = (id: string) => {
 		queryKey: ['agent', id],
 		queryFn: () => api.get(`/agents/${id}`),
 		enabled: !!id,
+	});
+};
+
+export const useAgentDocuments = (agentId: string, params?: AgentDocumentsQueryParams) => {
+	return useQuery<AgentDocumentsResponse>({
+		queryKey: ['agentDocuments', agentId, params],
+		queryFn: () => api.get(`/agents/${agentId}/documents`, { params }),
+		enabled: !!agentId,
 	});
 };

@@ -9,10 +9,7 @@ import {
 	AgentDetailHeader,
 	AgentDetailLoading,
 	AgentDetailNotFound,
-	AgentDescription,
-	AgentModelConfig,
-	AgentPromptConfig,
-	AgentMetadata,
+	AgentDetailTabs,
 } from '@/modules/agents/components/detail';
 
 const AgentDetailClient = () => {
@@ -32,16 +29,7 @@ const AgentDetailClient = () => {
 		<PageWrapper>
 			<AgentDetailHeader agent={agent} />
 			<Container>
-				<div className='grid gap-6'>
-					<AgentDescription description={agent.description} />
-					<AgentModelConfig modelConfig={agent.model_config} />
-					<AgentPromptConfig promptConfig={agent.prompt_config} />
-					<AgentMetadata
-						createdBy={agent.created_by}
-						createdAt={agent.created_at}
-						updatedAt={agent.updated_at}
-					/>
-				</div>
+				<AgentDetailTabs agent={agent} />
 			</Container>
 		</PageWrapper>
 	);

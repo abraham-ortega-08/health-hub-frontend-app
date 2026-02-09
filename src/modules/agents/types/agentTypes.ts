@@ -41,3 +41,36 @@ export interface AgentsQueryParams {
 	limit?: number;
 	is_active?: boolean;
 }
+
+// AgentDocument now extends the base Document structure from knowledge
+export interface AgentDocument {
+	id: string;
+	name: string;
+	type: 'FIXED' | 'DYNAMIC';
+	user_id: string | null;
+	session_id: string | null;
+	created_at: string;
+	file_url: string | null;
+	file_key: string | null;
+	file_size: number;
+	mime_type: string;
+	assigned_at: string;
+	assigned_by: string;
+	chunk_count: number;
+}
+
+export interface AgentDocumentsResponse {
+	items: AgentDocument[];
+	total: number;
+	page: number;
+	limit: number;
+	totalPages: number;
+	hasNext: boolean;
+	hasPrevious: boolean;
+}
+
+export interface AgentDocumentsQueryParams {
+	page?: number;
+	limit?: number;
+	includeContent?: boolean;
+}

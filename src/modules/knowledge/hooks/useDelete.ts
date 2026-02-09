@@ -12,6 +12,7 @@ interface UseDeleteOptions {
 
 interface UseDeleteReturn {
 	isDeleting: boolean;
+	deletingId?: string;
 	deleteDocument: (documentId: string) => Promise<void>;
 	deleteDocuments: (documentIds: string[]) => Promise<void>;
 }
@@ -24,6 +25,7 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 	} = options;
 
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [deletingId, setDeletingId] = useState<string | undefined>();
 	const queryClient = useQueryClient();
 	const deleteMutation = useDeleteDocumentsMutation();
 
@@ -37,6 +39,9 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 			}
 
 			setIsDeleting(true);
+			if (documentIds.length === 1) {
+				setDeletingId(documentIds[0]);
+			}
 			const toastId = toast.loading(
 				documentIds.length === 1 
 					? 'Deleting document...' 
@@ -80,6 +85,7 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 			onError?.(error as Error);
 		} finally {
 			setIsDeleting(false);
+			setDeletingId(undefined);
 		}
 		},
 		[confirmMessage, deleteMutation, queryClient, onSuccess, onError]
@@ -94,6 +100,7 @@ export const useDelete = (options: UseDeleteOptions = {}): UseDeleteReturn => {
 
 	return {
 		isDeleting,
+		deletingId,
 		deleteDocument,
 		deleteDocuments,
 	};

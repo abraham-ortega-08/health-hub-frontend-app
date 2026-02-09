@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Agent } from '../../types';
+import { Agent } from '../../../types';
 
 interface AgentModelConfigProps {
 	modelConfig: Agent['model_config'];
