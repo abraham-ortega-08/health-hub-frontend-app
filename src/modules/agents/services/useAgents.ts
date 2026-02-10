@@ -1,5 +1,5 @@
 import api from '@/services/axios';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
 	AgentsResponse,
 	AgentsQueryParams,
@@ -28,5 +28,21 @@ export const useAgentDocuments = (agentId: string, params?: AgentDocumentsQueryP
 		queryKey: ['agentDocuments', agentId, params],
 		queryFn: () => api.get(`/agents/${agentId}/documents`, { params }),
 		enabled: !!agentId,
+	});
+};
+
+export const useUpdateAgent = () => {
+	const queryClient = useQueryClient();
+
+	return useMutation({
+		mutationFn: (data: { id: string; payload: Partial<Agent> }) =>
+			api.patch(`/agents/${data.id}`, data.payload),
+		mutationKey: ['updateAgent'],
+		onSuccess: (_, variables) => {
+			// Invalidate and refetch the specific agent
+			queryClient.invalidateQueries({ queryKey: ['agent', variables.id] });
+			// Optionally invalidate the agents list
+			queryClient.invalidateQueries({ queryKey: ['agents'] });
+		},
 	});
 };

@@ -8,11 +8,9 @@ interface AgentDescriptionProps {
 
 export const AgentDescription: React.FC<AgentDescriptionProps> = ({ description }) => {
 	return (
-		<div className='bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-200 dark:border-zinc-800'>
-			<h2 className='text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-3'>
-				Description
-			</h2>
-			<p className='text-zinc-600 dark:text-zinc-400'>{description}</p>
+		<div>
+			<h3 className='text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-3'>Description</h3>
+			<p className='text-zinc-600 dark:text-zinc-400 leading-relaxed'>{description}</p>
 		</div>
 	);
 };

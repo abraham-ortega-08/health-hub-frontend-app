@@ -1,9 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { Agent } from '../../types';
 import { AgentDescription, AgentModelConfig, AgentPromptConfig, AgentMetadata } from './details-tab';
 import { AgentDocumentsList } from './documents-tab';
+import { EditableSection } from './EditableSection';
+import { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELD } from '../../utils/fieldConfig';
+import { basicInfoSchema, modelConfigSchema, promptConfigSchema } from '../../validation/agentSchemas';
+import { useUpdateAgent } from '../../services/useAgents';
 
 interface AgentDetailTabsProps {
 	agent: Agent;
@@ -24,6 +29,22 @@ const tabs: Tab[] = [
 
 export const AgentDetailTabs: React.FC<AgentDetailTabsProps> = ({ agent }) => {
 	const [activeTab, setActiveTab] = useState<TabId>('details');
+	const updateMutation = useUpdateAgent();
+
+	const handleSave = async (section: string, values: Record<string, any>) => {
+		try {
+			await updateMutation.mutateAsync({
+				id: agent.id,
+				payload: { [section]: values } as Partial<Agent>,
+			});
+
+			toast.success('Changes saved successfully!');
+		} catch (error: any) {
+			console.error('Save error:', error);
+			toast.error(error?.message || 'Failed to save changes');
+			throw error;
+		}
+	};
 
 	return (
 		<div className='space-y-6'>
@@ -56,9 +77,42 @@ export const AgentDetailTabs: React.FC<AgentDetailTabsProps> = ({ agent }) => {
 			<div className='min-h-[400px]'>
 				{activeTab === 'details' && (
 					<div className='grid gap-6'>
-						<AgentDescription description={agent.description} />
-						<AgentModelConfig modelConfig={agent.model_config} />
-						<AgentPromptConfig promptConfig={agent.prompt_config} />
+						{/* Basic Information - Editable */}
+						<EditableSection
+							title='Basic Information'
+							fields={BASIC_INFO_FIELDS}
+							initialData={{
+								name: agent.name,
+								description: agent.description,
+								model: agent.model,
+								is_default: agent.is_default,
+							}}
+							schema={basicInfoSchema}
+							onSave={(values) => handleSave('basic_info', values)}
+							ViewComponent={({ name, description }) => <AgentDescription description={description} />}
+						/>
+
+						{/* Model Configuration - Editable */}
+						<EditableSection
+							title='Model Configuration'
+							fields={MODEL_CONFIG_FIELDS}
+							initialData={agent.model_config}
+							schema={modelConfigSchema}
+							onSave={(values) => handleSave('model_config', values)}
+							ViewComponent={(props) => <AgentModelConfig modelConfig={props} />}
+						/>
+
+						{/* Prompt Configuration - Editable with Dynamic Keys */}
+						<EditableSection
+							title='Prompt Configuration'
+							fields={[PROMPT_CONFIG_FIELD]}
+							initialData={agent.prompt_config}
+							schema={promptConfigSchema}
+							onSave={(values) => handleSave('prompt_config', values)}
+							ViewComponent={(props) => <AgentPromptConfig promptConfig={props} />}
+						/>
+
+						{/* Metadata - Read Only */}
 						<AgentMetadata
 							createdBy={agent.created_by}
 							createdAt={agent.created_at}
