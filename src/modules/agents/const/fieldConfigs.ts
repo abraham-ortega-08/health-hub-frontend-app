@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { FieldConfig } from '../components/detail/forms/fieldConfig';
+import { FieldConfig } from '../utils/fieldConfig';
 import {
 	AI_MODELS,
 	MODEL_CONFIG_LIMITS,
