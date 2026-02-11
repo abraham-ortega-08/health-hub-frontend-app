@@ -117,20 +117,27 @@ export const BASIC_INFO_FIELDS: FieldConfig[] = [
 ] as const;
 
 /**
- * Prompt Config Field (Dynamic Key-Value)
+ * Prompt Config Fields (Fixed: system_prompt and no_context_prompt)
  */
-export const PROMPT_CONFIG_FIELD: FieldConfig = {
-	name: 'prompt_config',
-	label: 'Prompt Configuration',
-	type: 'dynamic-record',
-	defaultValue: {},
-	description: FIELD_DESCRIPTIONS.PROMPT_CONFIG,
-	validation: z
-		.record(
-			z.string().min(1, 'Key name is required'),
-			z.union([z.string().min(1, 'Value is required'), z.record(z.string())]),
-		)
-		.refine((obj) => Object.keys(obj).length > 0, {
-			message: 'At least one configuration key is required',
-		}),
-} as const;
+export const PROMPT_CONFIG_FIELDS: FieldConfig[] = [
+	{
+		name: 'system_prompt',
+		label: 'System Prompt',
+		type: 'markdown',
+		rows: TEXTAREA_ROWS.PROMPT,
+		required: true,
+		placeholder: 'Enter the system prompt in markdown format...',
+		description: 'Main system prompt that defines the agent behavior and capabilities',
+		validation: z.string().min(1, 'System prompt is required'),
+	},
+	{
+		name: 'no_context_prompt',
+		label: 'No Context Prompt',
+		type: 'markdown',
+		rows: TEXTAREA_ROWS.PROMPT,
+		required: true,
+		placeholder: 'Enter the fallback prompt when no context is available...',
+		description: 'Fallback prompt used when no relevant documents are found',
+		validation: z.string().min(1, 'No context prompt is required'),
+	},
+] as const;

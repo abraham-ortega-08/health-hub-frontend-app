@@ -6,7 +6,7 @@ import { Agent } from '../../types';
 import { AgentDescription, AgentModelConfig, AgentPromptConfig, AgentMetadata } from './details-tab';
 import { AgentDocumentsList } from './documents-tab';
 import { EditableSection } from './EditableSection';
-import { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELD } from '../../utils/fieldConfig';
+import { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELDS } from '../../utils/fieldConfig';
 import { basicInfoSchema, modelConfigSchema, promptConfigSchema } from '../../validation/agentSchemas';
 import { useUpdateAgent } from '../../services/useAgents';
 
@@ -102,15 +102,15 @@ export const AgentDetailTabs: React.FC<AgentDetailTabsProps> = ({ agent }) => {
 							ViewComponent={(props) => <AgentModelConfig modelConfig={props} />}
 						/>
 
-						{/* Prompt Configuration - Editable with Dynamic Keys */}
-						<EditableSection
-							title='Prompt Configuration'
-							fields={[PROMPT_CONFIG_FIELD]}
-							initialData={agent.prompt_config}
-							schema={promptConfigSchema}
-							onSave={(values) => handleSave('prompt_config', values)}
-							ViewComponent={(props) => <AgentPromptConfig promptConfig={props} />}
-						/>
+					{/* Prompt Configuration - Editable with Fixed Keys */}
+					<EditableSection
+						title='Prompt Configuration'
+						fields={PROMPT_CONFIG_FIELDS}
+						initialData={agent.prompt_config}
+						schema={promptConfigSchema}
+						onSave={(values) => handleSave('prompt_config', values)}
+						ViewComponent={(props) => <AgentPromptConfig promptConfig={props} />}
+					/>
 
 						{/* Metadata - Read Only */}
 						<AgentMetadata

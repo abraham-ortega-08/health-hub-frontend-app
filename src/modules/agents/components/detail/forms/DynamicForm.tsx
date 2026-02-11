@@ -3,8 +3,15 @@
 import React from 'react';
 import { useForm } from '@tanstack/react-form';
 import { z } from 'zod';
+import dynamic from 'next/dynamic';
 import { FieldConfig } from '../../../utils/fieldConfig';
 import { DynamicRecordField } from './DynamicRecordField';
+
+// Dynamically import MDXEditor to avoid SSR issues
+const PromptMarkdownEditor = dynamic(() => import('./PromptMarkdownEditor').then((m) => m.PromptMarkdownEditor), { 
+	ssr: false,
+	loading: () => <div className="w-full h-[400px] border border-zinc-200 dark:border-zinc-700 rounded-lg bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">Loading editor...</div>
+});
 
 interface DynamicFormProps {
 	fields: FieldConfig[];
@@ -55,6 +62,48 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
 							fieldConfig={fieldConfig}
 						/>
 					)}
+				</form.Field>
+			);
+		}
+
+		// Markdown Type with MDXEditor
+		if (fieldConfig.type === 'markdown') {
+			return (
+				<form.Field key={fieldConfig.name} name={fieldConfig.name}>
+					{(field) => {
+						return (
+							<div className='space-y-2'>
+								<label className='flex items-center gap-1 text-sm font-medium text-zinc-700 dark:text-zinc-300'>
+									{fieldConfig.label}
+									{fieldConfig.required && <span className='text-red-500'>*</span>}
+								</label>
+
+								{fieldConfig.description && (
+									<p className='text-xs text-zinc-500 dark:text-zinc-400 mb-2'>
+										{fieldConfig.description}
+									</p>
+								)}
+
+								{/* MDXEditor */}
+								<PromptMarkdownEditor
+									value={field.state.value || ''}
+									onChange={(newValue) => field.handleChange(newValue)}
+									placeholder={fieldConfig.placeholder}
+								/>
+
+								<p className='text-xs text-zinc-500 dark:text-zinc-400 italic mt-2'>
+									💡 Tip: Use the toolbar to format your text. Supports headings, lists, links, tables, and code blocks.
+								</p>
+
+								{/* Validation errors */}
+								{field.state.meta.errors && field.state.meta.errors.length > 0 && (
+									<p className='text-sm text-red-500 dark:text-red-400 mt-2'>
+										{field.state.meta.errors[0]}
+									</p>
+								)}
+							</div>
+						);
+					}}
 				</form.Field>
 			);
 		}

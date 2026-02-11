@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELD } from '../const';
+import { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELDS } from '../const';
 
-export type FieldType = 'text' | 'textarea' | 'number' | 'boolean' | 'select' | 'dynamic-record';
+export type FieldType = 'text' | 'textarea' | 'number' | 'boolean' | 'select' | 'dynamic-record' | 'markdown';
 
 export interface FieldConfig {
 	name: string;
@@ -20,7 +20,7 @@ export interface FieldConfig {
 }
 
 // Re-export field configs from constants for backward compatibility
-export { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELD };
+export { BASIC_INFO_FIELDS, MODEL_CONFIG_FIELDS, PROMPT_CONFIG_FIELDS };
 
 // ====================================================================
 // SECTION CONFIGURATIONS
@@ -53,7 +53,7 @@ export const AGENT_SECTIONS: SectionConfig[] = [
 	{
 		id: 'prompt_config',
 		title: 'Prompt Configuration',
-		fields: [PROMPT_CONFIG_FIELD],
+		fields: PROMPT_CONFIG_FIELDS,
 		extractData: (agent) => agent.prompt_config,
 	},
 ];

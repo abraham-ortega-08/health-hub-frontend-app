@@ -75,5 +75,6 @@ export const FIELD_PLACEHOLDERS = {
 export const TEXTAREA_ROWS = {
 	DESCRIPTION: 4,
 	PROMPT_VALUE: 3,
+	PROMPT: 15,
 	JSON_EDITOR: 20,
 } as const;

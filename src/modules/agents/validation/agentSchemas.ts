@@ -9,19 +9,11 @@ export const modelConfigSchema = z.object({
 	max_historical_chunks: z.number().int().positive(),
 });
 
-// ⚠️ IMPORTANT: prompt_config is DYNAMIC - user can add/remove any keys
-// Using z.record to allow any string key with string or nested object values
-export const promptConfigSchema = z
-	.record(
-		z.string().min(1, 'Key name is required'),
-		z.union([
-			z.string().min(1, 'Value is required'),
-			z.record(z.string()), // For nested objects like ADDITIONAL_SECTIONS
-		]),
-	)
-	.refine((obj) => Object.keys(obj).length > 0, {
-		message: 'At least one configuration key is required',
-	});
+// Prompt Configuration Schema (Fixed: system_prompt and no_context_prompt)
+export const promptConfigSchema = z.object({
+	system_prompt: z.string().min(1, 'System prompt is required'),
+	no_context_prompt: z.string().min(1, 'No context prompt is required'),
+});
 
 // Basic Information Schema
 export const basicInfoSchema = z.object({

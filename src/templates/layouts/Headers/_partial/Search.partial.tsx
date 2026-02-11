@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useFormik } from 'formik';
 import Link from 'next/link';
 import { appPages } from '@/config/pages.config';
 import { Icon } from '@iconify/react';
@@ -23,25 +22,17 @@ const SearchPartialContent = () => {
 	const ref = useRef<HTMLDivElement>(null);
 	// @ts-ignore
 	const [domRect] = useDomRect(ref);
+	const [searchField, setSearchField] = useState('');
 
-	const formik = useFormik({
-		onSubmit(): void | Promise<never> {
-			return undefined;
-		},
-		initialValues: {
-			searchField: '',
-		},
-	});
-
-	const leftContent = <Icon icon='heroicons:magnifying-glass' className='mx-2' />;
-	const rightContent = formik.values.searchField ? (
+	const leftContent = <Icon icon='heroicons:magnifying-glass' className='mx-2 w-5 h-5 text-zinc-500 dark:text-zinc-400' />;
+	const rightContent = searchField ? (
 		<Button
 			icon='heroicons:x-mark'
 			color='red'
 			size='sm'
 			rounded='rounded'
 			className=''
-			onClick={() => formik.setFieldValue('searchField', '')}
+			onClick={() => setSearchField('')}
 		/>
 	) : (
 		<Button
@@ -61,8 +52,8 @@ const SearchPartialContent = () => {
 	];
 	const result = list.filter(
 		(key) =>
-			t(key.text).toLowerCase().includes(formik.values.searchField.toLowerCase()) ||
-			key.category.toLowerCase().includes(formik.values.searchField.toLowerCase()),
+			t(key.text).toLowerCase().includes(searchField.toLowerCase()) ||
+			key.category.toLowerCase().includes(searchField.toLowerCase()),
 	);
 
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -100,12 +91,12 @@ const SearchPartialContent = () => {
 					name='searchField'
 					placeholder='Search or type a command'
 					className='min-w-[22rem]'
-					value={formik.values.searchField}
-					onChange={formik.handleChange}
+					value={searchField}
+					onChange={(e) => setSearchField(e.target.value)}
 					autoComplete='off'
 				/>
 			</FieldWrap>
-			{formik.values.searchField && (
+			{searchField && (
 				<div
 					className='absolute top-0 z-10 h-auto w-full rounded-lg bg-white shadow-2xl outline outline-8 outline-white ring-2 ring-gray-100 ring-offset-8 dark:bg-zinc-950 dark:outline-zinc-950 dark:ring-zinc-800/50 max-sm:hidden'
 					style={{ paddingTop: domRect?.height }}>
@@ -121,32 +112,32 @@ const SearchPartialContent = () => {
 											<span
 												dangerouslySetInnerHTML={{
 													__html: t(i.text).replace(
-														new RegExp(formik.values.searchField, 'gi'),
+														new RegExp(searchField, 'gi'),
 														`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
 													),
 												}}
 											/>
 										</Button>
 									</div>
-									{i.category && (
-										<div className='flex-shrink-0'>
-											<Badge
-												variant='outline'
-												className='border-transparent text-xs'>
-												<span
-													dangerouslySetInnerHTML={{
-														__html: i.category.replace(
-															new RegExp(
-																formik.values.searchField,
-																'gi',
-															),
-															`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
-														),
-													}}
-												/>
-											</Badge>
-										</div>
-									)}
+					{i.category && (
+						<div className='flex-shrink-0'>
+							<Badge
+								variant='outline'
+								className='border-transparent text-xs'>
+								<span
+									dangerouslySetInnerHTML={{
+										__html: i.category.replace(
+											new RegExp(
+												searchField,
+												'gi',
+											),
+											`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
+										),
+									}}
+								/>
+							</Badge>
+						</div>
+					)}
 								</Link>
 							))
 						) : (
@@ -171,12 +162,12 @@ const SearchPartialContent = () => {
 							name='searchField'
 							placeholder='Search or type a command'
 							className='min-w-[22rem]'
-							value={formik.values.searchField}
-							onChange={formik.handleChange}
+							value={searchField}
+							onChange={(e) => setSearchField(e.target.value)}
 							autoComplete='off'
 						/>
 					</FieldWrap>
-					{formik.values.searchField && (
+					{searchField && (
 						<div className='z-10 h-auto w-full bg-white dark:bg-zinc-950 dark:outline-zinc-950 dark:ring-zinc-800/50 sm:hidden'>
 							<div className='max-h-96 divide-y divide-dashed divide-zinc-500/50 overflow-auto bg-white dark:bg-zinc-950 [&>*]:py-4'>
 								{result.length ? (
@@ -191,7 +182,7 @@ const SearchPartialContent = () => {
 														dangerouslySetInnerHTML={{
 															__html: t(i.text).replace(
 																new RegExp(
-																	formik.values.searchField,
+																	searchField,
 																	'gi',
 																),
 																`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
@@ -200,25 +191,25 @@ const SearchPartialContent = () => {
 													/>
 												</Button>
 											</div>
-											{i.category && (
-												<div className='flex-shrink-0'>
-													<Badge
-														variant='outline'
-														className='border-transparent text-xs'>
-														<span
-															dangerouslySetInnerHTML={{
-																__html: i.category.replace(
-																	new RegExp(
-																		formik.values.searchField,
-																		'gi',
-																	),
-																	`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
-																),
-															}}
-														/>
-													</Badge>
-												</div>
-											)}
+					{i.category && (
+						<div className='flex-shrink-0'>
+							<Badge
+								variant='outline'
+								className='border-transparent text-xs'>
+								<span
+									dangerouslySetInnerHTML={{
+										__html: i.category.replace(
+											new RegExp(
+												searchField,
+												'gi',
+											),
+											`<span class='bg-amber-500/50 text-zinc-950'>$&</span>`,
+										),
+									}}
+								/>
+							</Badge>
+						</div>
+					)}
 										</Link>
 									))
 								) : (
