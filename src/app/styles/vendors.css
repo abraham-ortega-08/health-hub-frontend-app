@@ -55,3 +55,84 @@
 .rdrDateInput.rdrDateDisplayItem.rdrDateDisplayItemActive {
 	@apply bg-transparent dark:bg-transparent;
 }
+
+/* MDXEditor Custom Styles */
+.mdx-editor-wrapper {
+	@apply bg-white dark:bg-zinc-900;
+}
+
+.mdx-editor-wrapper .mdxeditor {
+	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar {
+	@apply bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar button {
+	@apply text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar button[aria-pressed='true'] {
+	@apply bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar select {
+	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-700;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable {
+	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h1,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h2,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h3,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h4,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h5,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h6 {
+	@apply text-zinc-900 dark:text-zinc-100;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable code {
+	@apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-1.5 py-0.5 rounded;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable pre {
+	@apply bg-zinc-900 dark:bg-zinc-950;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable pre code {
+	@apply bg-transparent text-zinc-100;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable a {
+	@apply text-blue-600 dark:text-blue-400;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable blockquote {
+	@apply border-l-4 border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable table {
+	@apply border-zinc-200 dark:border-zinc-800;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable table th,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable table td {
+	@apply border border-zinc-200 dark:border-zinc-800;
+}
+
+/* Dialog styles for MDXEditor */
+.mdx-editor-wrapper dialog {
+	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-700 rounded-lg;
+}
+
+.mdx-editor-wrapper dialog input,
+.mdx-editor-wrapper dialog textarea {
+	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-700;
+}
+
+.mdx-editor-wrapper dialog button {
+	@apply bg-blue-600 hover:bg-blue-700 text-white;
+}

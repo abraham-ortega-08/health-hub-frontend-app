@@ -64,7 +64,7 @@ export const AgentDocumentsList: React.FC<AgentDocumentsListProps> = ({ agentId 
 			<DocumentList documents={documents} isLoading={isLoading} />
 
 			{/* Pagination */}
-			{data && !isLoading && totalPages > 1 && (
+			{data && totalPages > 1 && (
 				<div className='flex justify-center pt-4'>
 					<Pagination
 						currentPage={page}

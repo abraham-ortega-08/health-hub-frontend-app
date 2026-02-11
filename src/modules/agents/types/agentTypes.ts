@@ -6,12 +6,8 @@ export interface Agent {
 	is_default: boolean;
 	is_active: boolean;
 	prompt_config: {
-		SYSTEM_ROLE: string;
-		RESPONSE_FORMAT: string;
-		RESPONSE_STRUCTURE: string;
-		ADDITIONAL_SECTIONS?: Record<string, string>;
-		COMMUNICATION_STYLE: string;
-		NO_CONTEXT_AVAILABLE: string;
+		system_prompt: string;
+		no_context_prompt: string;
 	};
 	model_config: {
 		max_tokens: number;
