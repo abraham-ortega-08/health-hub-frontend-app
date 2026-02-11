@@ -88,6 +88,7 @@ const ChatInput: FC<ChatInputProps> = ({
 					onKeyPress={handleKeyPress}
 					value={message}
 					disabled={disabled}
+					className='!ps-14 !pe-3'
 				/>
 			</FieldWrap>
 

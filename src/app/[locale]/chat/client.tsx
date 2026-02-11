@@ -29,7 +29,11 @@ const AiDashboardClient = () => {
 						{currentSession && currentSession.messages.length > 0 ? (
 							<>
 								{currentSession.messages.map((msg) => (
-									<ChatMessage key={msg.id} isAnswer={msg.isAnswer}>
+									<ChatMessage 
+										key={msg.id} 
+										isAnswer={msg.isAnswer}
+										documents={msg.documents}
+									>
 										{msg.content}
 									</ChatMessage>
 								))}

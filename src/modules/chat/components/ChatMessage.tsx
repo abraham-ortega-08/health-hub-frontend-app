@@ -4,6 +4,8 @@ import Card, { CardBody, CardFooter, CardFooterChild } from '@/components/ui/Car
 import Avatar from '@/components/Avatar';
 import { UserBrainThumb } from '@/assets/images';
 import { StaticImageData } from 'next/image';
+import ReactMarkdown from 'react-markdown';
+import DocumentReference from './DocumentReference';
 
 interface ChatMessageProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;
@@ -11,10 +13,15 @@ interface ChatMessageProps extends HTMLAttributes<HTMLDivElement> {
 	isAnswer?: boolean;
 	userImage?: string | StaticImageData;
 	userName?: string;
+	documents?: Array<{
+		name: string;
+		fragment: string;
+		similarity: string;
+	}>;
 }
 
 const ChatMessage: FC<ChatMessageProps> = (props) => {
-	const { children, className, isAnswer = false, userImage, userName = 'AI', ...rest } = props;
+	const { children, className, isAnswer = false, userImage, userName = 'AI', documents, ...rest } = props;
 	
 	return (
 		<div
@@ -25,7 +32,16 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
 			)}
 			{...rest}>
 			<Card>
-				<CardBody className='pb-8'>{children}</CardBody>
+				<CardBody className='pb-8'>
+					<div className='prose prose-sm dark:prose-invert max-w-none'>
+						{typeof children === 'string' ? (
+							<ReactMarkdown>{children}</ReactMarkdown>
+						) : (
+							children
+						)}
+					</div>
+					{isAnswer && documents && <DocumentReference documents={documents} />}
+				</CardBody>
 				<CardFooter className='relative !p-0'>
 					<CardFooterChild />
 					<CardFooterChild>

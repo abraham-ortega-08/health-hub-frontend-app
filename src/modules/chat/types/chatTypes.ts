@@ -3,6 +3,11 @@ export interface Message {
 	content: string;
 	isAnswer: boolean;
 	timestamp: number;
+	documents?: Array<{
+		name: string;
+		fragment: string;
+		similarity: string;
+	}>;
 }
 
 export interface ChatSession {
@@ -13,5 +18,9 @@ export interface ChatSession {
 
 export interface ChatQueryResponse {
 	answer: string;
-	documents?: string[];
+	documents?: Array<{
+		name: string;
+		fragment: string;
+		similarity: string;
+	}>;
 }
