@@ -57,32 +57,217 @@
 }
 
 /* MDXEditor Custom Styles */
-.mdx-editor-wrapper {
+.mdx-editor-wrapper,
+.mdxEditorWrapper {
 	@apply bg-white dark:bg-zinc-900;
 }
 
-.mdx-editor-wrapper .mdxeditor {
-	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100;
+.mdx-editor-wrapper .mdxeditor,
+.mdxEditorWrapper .mdxeditor {
+	background-color: white !important;
+	color: #18181b !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-toolbar {
-	@apply bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700;
+.dark .mdx-editor-wrapper .mdxeditor,
+.dark .mdxEditorWrapper .mdxeditor {
+	background-color: #18181b !important;
+	color: #fafafa !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-toolbar button {
-	@apply text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700;
+.mdx-editor-wrapper .mdxeditor-toolbar,
+.mdxEditorWrapper .mdxeditor-toolbar {
+	background-color: #fafafa !important;
+	border-bottom: 1px solid #e4e4e7 !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-toolbar button[aria-pressed='true'] {
-	@apply bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+.dark .mdx-editor-wrapper .mdxeditor-toolbar,
+.dark .mdxEditorWrapper .mdxeditor-toolbar {
+	background-color: #27272a !important;
+	border-bottom: 1px solid #3f3f46 !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-toolbar select {
-	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-700;
+.mdx-editor-wrapper .mdxeditor-toolbar button,
+.mdxEditorWrapper .mdxeditor-toolbar button {
+	color: #3f3f46 !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable {
-	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100;
+.dark .mdx-editor-wrapper .mdxeditor-toolbar button,
+.dark .mdxEditorWrapper .mdxeditor-toolbar button {
+	color: #d4d4d8 !important;
+}
+
+/* SVG icons in toolbar buttons */
+.mdx-editor-wrapper .mdxeditor-toolbar button svg,
+.mdxEditorWrapper .mdxeditor-toolbar button svg {
+	color: #3f3f46 !important;
+	fill: #3f3f46 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar button svg,
+.dark .mdxEditorWrapper .mdxeditor-toolbar button svg {
+	color: #d4d4d8 !important;
+	fill: #d4d4d8 !important;
+}
+
+/* Toolbar separators */
+.mdx-editor-wrapper .mdxeditor-toolbar-separator,
+.mdxEditorWrapper .mdxeditor-toolbar-separator {
+	background-color: #e4e4e7 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar-separator,
+.dark .mdxEditorWrapper .mdxeditor-toolbar-separator {
+	background-color: #3f3f46 !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar button:hover,
+.mdxEditorWrapper .mdxeditor-toolbar button:hover {
+	background-color: #e4e4e7 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar button:hover,
+.dark .mdxEditorWrapper .mdxeditor-toolbar button:hover {
+	background-color: #3f3f46 !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar button[aria-pressed='true'],
+.mdxEditorWrapper .mdxeditor-toolbar button[aria-pressed='true'] {
+	background-color: #dbeafe !important;
+	color: #2563eb !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar button[aria-pressed='true'],
+.dark .mdxEditorWrapper .mdxeditor-toolbar button[aria-pressed='true'] {
+	background-color: rgba(30, 64, 175, 0.3) !important;
+	color: #60a5fa !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar select,
+.mdxEditorWrapper .mdxeditor-toolbar select {
+	background-color: white !important;
+	color: #18181b !important;
+	border-color: #e4e4e7 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar select,
+.dark .mdxEditorWrapper .mdxeditor-toolbar select {
+	background-color: #18181b !important;
+	color: #fafafa !important;
+	border-color: #3f3f46 !important;
+}
+
+/* Dropdown menu styles */
+.mdx-editor-wrapper .mdxeditor-toolbar [role='menu'],
+.mdxEditorWrapper .mdxeditor-toolbar [role='menu'],
+.mdx-editor-wrapper .mdxeditor-toolbar .mdxeditor-popup-container,
+.mdxEditorWrapper .mdxeditor-toolbar .mdxeditor-popup-container {
+	background-color: white !important;
+	color: #18181b !important;
+	border: 1px solid #e4e4e7 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar [role='menu'],
+.dark .mdxEditorWrapper .mdxeditor-toolbar [role='menu'],
+.dark .mdx-editor-wrapper .mdxeditor-toolbar .mdxeditor-popup-container,
+.dark .mdxEditorWrapper .mdxeditor-toolbar .mdxeditor-popup-container {
+	background-color: #27272a !important;
+	color: #fafafa !important;
+	border: 1px solid #3f3f46 !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar [role='menuitem'],
+.mdxEditorWrapper .mdxeditor-toolbar [role='menuitem'] {
+	color: #18181b !important;
+	background-color: transparent !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar [role='menuitem'],
+.dark .mdxEditorWrapper .mdxeditor-toolbar [role='menuitem'] {
+	color: #fafafa !important;
+	background-color: transparent !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-toolbar [role='menuitem']:hover,
+.mdxEditorWrapper .mdxeditor-toolbar [role='menuitem']:hover {
+	background-color: #f4f4f5 !important;
+	color: #18181b !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar [role='menuitem']:hover,
+.dark .mdxEditorWrapper .mdxeditor-toolbar [role='menuitem']:hover {
+	background-color: #3f3f46 !important;
+	color: #fafafa !important;
+}
+
+/* Block type selector button */
+.mdx-editor-wrapper .mdxeditor-toolbar button[title*='Block'],
+.mdxEditorWrapper .mdxeditor-toolbar button[title*='Block'],
+.mdx-editor-wrapper .mdxeditor-toolbar .mdxeditor-block-type-select,
+.mdxEditorWrapper .mdxeditor-toolbar .mdxeditor-block-type-select {
+	background-color: white !important;
+	color: #18181b !important;
+	border: 1px solid #e4e4e7 !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-toolbar button[title*='Block'],
+.dark .mdxEditorWrapper .mdxeditor-toolbar button[title*='Block'],
+.dark .mdx-editor-wrapper .mdxeditor-toolbar .mdxeditor-block-type-select,
+.dark .mdxEditorWrapper .mdxeditor-toolbar .mdxeditor-block-type-select {
+	background-color: #27272a !important;
+	color: #fafafa !important;
+	border: 1px solid #3f3f46 !important;
+}
+
+/* All popups and dropdowns */
+.mdx-editor-wrapper [class*='popup'],
+.mdxEditorWrapper [class*='popup'],
+.mdx-editor-wrapper [class*='dropdown'],
+.mdxEditorWrapper [class*='dropdown'],
+.mdx-editor-wrapper [class*='menu'],
+.mdxEditorWrapper [class*='menu'] {
+	background-color: white !important;
+	color: #18181b !important;
+}
+
+.dark .mdx-editor-wrapper [class*='popup'],
+.dark .mdxEditorWrapper [class*='popup'],
+.dark .mdx-editor-wrapper [class*='dropdown'],
+.dark .mdxEditorWrapper [class*='dropdown'],
+.dark .mdx-editor-wrapper [class*='menu'],
+.dark .mdxEditorWrapper [class*='menu'] {
+	background-color: #27272a !important;
+	color: #fafafa !important;
+}
+
+/* Popup items */
+.mdx-editor-wrapper [class*='popup'] > *,
+.mdxEditorWrapper [class*='popup'] > *,
+.mdx-editor-wrapper [class*='dropdown'] > *,
+.mdxEditorWrapper [class*='dropdown'] > *,
+.mdx-editor-wrapper [class*='menu'] > *,
+.mdxEditorWrapper [class*='menu'] > * {
+	color: #18181b !important;
+}
+
+.dark .mdx-editor-wrapper [class*='popup'] > *,
+.dark .mdxEditorWrapper [class*='popup'] > *,
+.dark .mdx-editor-wrapper [class*='dropdown'] > *,
+.dark .mdxEditorWrapper [class*='dropdown'] > *,
+.dark .mdx-editor-wrapper [class*='menu'] > *,
+.dark .mdxEditorWrapper [class*='menu'] > * {
+	color: #fafafa !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable,
+.mdxEditorWrapper .mdxeditor-root-contenteditable {
+	background-color: white !important;
+	color: #18181b !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable {
+	background-color: #18181b !important;
+	color: #fafafa !important;
 }
 
 .mdx-editor-wrapper .mdxeditor-root-contenteditable h1,
@@ -90,49 +275,104 @@
 .mdx-editor-wrapper .mdxeditor-root-contenteditable h3,
 .mdx-editor-wrapper .mdxeditor-root-contenteditable h4,
 .mdx-editor-wrapper .mdxeditor-root-contenteditable h5,
-.mdx-editor-wrapper .mdxeditor-root-contenteditable h6 {
-	@apply text-zinc-900 dark:text-zinc-100;
+.mdx-editor-wrapper .mdxeditor-root-contenteditable h6,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h1,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h2,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h3,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h4,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h5,
+.mdxEditorWrapper .mdxeditor-root-contenteditable h6 {
+	color: #18181b !important;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable code {
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h1,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h2,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h3,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h4,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h5,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable h6,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h1,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h2,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h3,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h4,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h5,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable h6 {
+	color: #fafafa !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable p,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable li,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable ul,
+.mdx-editor-wrapper .mdxeditor-root-contenteditable ol,
+.mdxEditorWrapper .mdxeditor-root-contenteditable p,
+.mdxEditorWrapper .mdxeditor-root-contenteditable li,
+.mdxEditorWrapper .mdxeditor-root-contenteditable ul,
+.mdxEditorWrapper .mdxeditor-root-contenteditable ol {
+	color: #18181b !important;
+}
+
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable p,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable li,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable ul,
+.dark .mdx-editor-wrapper .mdxeditor-root-contenteditable ol,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable p,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable li,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable ul,
+.dark .mdxEditorWrapper .mdxeditor-root-contenteditable ol {
+	color: #fafafa !important;
+}
+
+.mdx-editor-wrapper .mdxeditor-root-contenteditable code,
+.mdxEditorWrapper .mdxeditor-root-contenteditable code {
 	@apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 px-1.5 py-0.5 rounded;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable pre {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable pre,
+.mdxEditorWrapper .mdxeditor-root-contenteditable pre {
 	@apply bg-zinc-900 dark:bg-zinc-950;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable pre code {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable pre code,
+.mdxEditorWrapper .mdxeditor-root-contenteditable pre code {
 	@apply bg-transparent text-zinc-100;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable a {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable a,
+.mdxEditorWrapper .mdxeditor-root-contenteditable a {
 	@apply text-blue-600 dark:text-blue-400;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable blockquote {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable blockquote,
+.mdxEditorWrapper .mdxeditor-root-contenteditable blockquote {
 	@apply border-l-4 border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400;
 }
 
-.mdx-editor-wrapper .mdxeditor-root-contenteditable table {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable table,
+.mdxEditorWrapper .mdxeditor-root-contenteditable table {
 	@apply border-zinc-200 dark:border-zinc-800;
 }
 
 .mdx-editor-wrapper .mdxeditor-root-contenteditable table th,
-.mdx-editor-wrapper .mdxeditor-root-contenteditable table td {
+.mdx-editor-wrapper .mdxeditor-root-contenteditable table td,
+.mdxEditorWrapper .mdxeditor-root-contenteditable table th,
+.mdxEditorWrapper .mdxeditor-root-contenteditable table td {
 	@apply border border-zinc-200 dark:border-zinc-800;
 }
 
 /* Dialog styles for MDXEditor */
-.mdx-editor-wrapper dialog {
+.mdx-editor-wrapper dialog,
+.mdxEditorWrapper dialog {
 	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-700 rounded-lg;
 }
 
 .mdx-editor-wrapper dialog input,
-.mdx-editor-wrapper dialog textarea {
+.mdx-editor-wrapper dialog textarea,
+.mdxEditorWrapper dialog input,
+.mdxEditorWrapper dialog textarea {
 	@apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border-zinc-200 dark:border-zinc-700;
 }
 
-.mdx-editor-wrapper dialog button {
+.mdx-editor-wrapper dialog button,
+.mdxEditorWrapper dialog button {
 	@apply bg-blue-600 hover:bg-blue-700 text-white;
 }

@@ -37,7 +37,7 @@ interface PromptMarkdownEditorProps {
 export const PromptMarkdownEditor = forwardRef<MDXEditorMethods, PromptMarkdownEditorProps>(
 	({ value, onChange, placeholder }, ref) => {
 		return (
-			<div className='mdx-editor-wrapper border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden'>
+			<div className="mdx-editor-wrapper border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden">
 				<MDXEditor
 					ref={ref}
 					markdown={value}
