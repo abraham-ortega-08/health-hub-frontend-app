@@ -1,9 +1,9 @@
-import { SSEEvent, ProgressInfo, DocumentReference, UploadedFile } from '../types';
+import { SSEEvent, ProgressInfo, DocumentMetadata, UploadedFile } from '../types';
 
 export interface StreamCallbacks {
 	onStreamStart?: (streamId: string) => void;
 	onProgress?: (progress: ProgressInfo) => void;
-	onMetadata?: (documents?: DocumentReference[], uploadedFiles?: UploadedFile[]) => void;
+	onMetadata?: (documents?: DocumentMetadata[], uploadedFiles?: UploadedFile[]) => void;
 	onChunk?: (content: string) => void;
 	onComplete?: () => void;
 	onCancelled?: () => void;

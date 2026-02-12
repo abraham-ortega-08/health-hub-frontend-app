@@ -7,7 +7,7 @@ import { StaticImageData } from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import DocumentReference from './DocumentReference';
 import ProgressIndicator from './ProgressIndicator';
-import { DocumentReference as DocRefType, ProgressInfo } from '../types';
+import { DocumentMetadata, ProgressInfo } from '../types';
 
 interface ChatMessageProps extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;
@@ -15,7 +15,7 @@ interface ChatMessageProps extends HTMLAttributes<HTMLDivElement> {
 	isAnswer?: boolean;
 	userImage?: string | StaticImageData;
 	userName?: string;
-	documents?: DocRefType[];
+	documents?: DocumentMetadata[];
 	isStreaming?: boolean;
 	progress?: ProgressInfo | null;
 }

@@ -1,4 +1,4 @@
-export interface DocumentReference {
+export interface DocumentMetadata {
 	name: string;
 	fragment: string;
 	similarity: string;
@@ -14,7 +14,7 @@ export interface Message {
 	content: string;
 	isAnswer: boolean;
 	timestamp: number;
-	documents?: DocumentReference[];
+	documents?: DocumentMetadata[];
 	uploadedFiles?: UploadedFile[];
 	isStreaming?: boolean;
 }
@@ -27,7 +27,7 @@ export interface ChatSession {
 
 export interface ChatQueryResponse {
 	answer: string;
-	documents?: DocumentReference[];
+	documents?: DocumentMetadata[];
 	uploadedFiles?: UploadedFile[];
 }
 
@@ -61,7 +61,7 @@ export interface ProgressEvent {
 
 export interface MetadataEvent {
 	type: 'metadata';
-	documents?: DocumentReference[];
+	documents?: DocumentMetadata[];
 	uploadedFiles?: UploadedFile[];
 }
 
