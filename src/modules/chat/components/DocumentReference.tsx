@@ -14,7 +14,7 @@ const DocumentReference: FC<DocumentReferenceProps> = ({ documents }) => {
 	if (!documents || documents.length === 0) return null;
 
 	return (
-		<div className='mt-4 space-y-2'>
+		<div className='mt-6 space-y-2'>
 			<div className='flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300'>
 				<Icon icon='heroicons:document-text' className='text-lg' />
 				<span>Referenced Documents ({documents.length})</span>

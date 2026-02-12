@@ -1,24 +1,26 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import  { useRef } from 'react';
 import PageWrapper from '@/components/layouts/PageWrapper/PageWrapper';
 import Container from '@/components/layouts/Container/Container';
 import classNames from 'classnames';
-import LoaderDotsCommon from '@/components/LoaderDots.common';
-import { useChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer, ChatSubheader } from '@/modules/chat';
+import { useStreamingChat, ChatContainer, ChatMessage, ChatInput, ChatInputContainer, ChatSubheader } from '@/modules/chat';
 
 const AiDashboardClient = () => {
-	const { currentSession, sendMessage, isLoading, selectedFiles, addFiles, removeFile, clearFiles } = useChat();
+	const { 
+		currentSession, 
+		sendMessage, 
+		cancelStream,
+		isStreaming,
+		progress,
+		selectedFiles, 
+		addFiles, 
+		removeFile, 
+		clearFiles 
+	} = useStreamingChat();
+	
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
-
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-	};
-
-	useEffect(() => {
-		scrollToBottom();
-	}, [currentSession?.messages, isLoading]);
 
 	return (
 		<PageWrapper>
@@ -33,21 +35,13 @@ const AiDashboardClient = () => {
 										key={msg.id} 
 										isAnswer={msg.isAnswer}
 										documents={msg.documents}
+										isStreaming={msg.isStreaming}
+										progress={msg.isStreaming ? progress : null}
 									>
 										{msg.content}
 									</ChatMessage>
 								))}
-								{isLoading && (
-									<ChatMessage isAnswer>
-										<div className='flex items-center gap-3'>
-											<LoaderDotsCommon />
-											<span className='text-sm text-zinc-500 dark:text-zinc-400'>
-												AI is thinking...
-											</span>
-										</div>
-									</ChatMessage>
-								)}
-								<div ref={messagesEndRef} className='h-32' />
+								<div ref={messagesEndRef} className='h-40' />
 							</>
 						) : (
 							<div className='col-span-12 my-20'>
@@ -72,11 +66,13 @@ const AiDashboardClient = () => {
 				<ChatInputContainer>
 					<ChatInput
 						onSend={sendMessage}
+						onCancel={cancelStream}
 						files={selectedFiles}
 						onAddFiles={addFiles}
 						onRemoveFile={removeFile}
 						onClearFiles={clearFiles}
-						disabled={isLoading}
+						disabled={false}
+						isStreaming={isStreaming}
 					/>
 				</ChatInputContainer>
 			</Container>
