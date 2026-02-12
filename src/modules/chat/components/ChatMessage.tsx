@@ -45,7 +45,7 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
 			)}
 			{...rest}>
 			<Card>
-				<CardBody className='pb-12'>
+				<CardBody className='pb-8'>
 					{/* Contenido del mensaje */}
 					{hasContent && (
 						<div className='prose prose-sm dark:prose-invert max-w-none mb-4'>
@@ -85,7 +85,7 @@ const ChatMessage: FC<ChatMessageProps> = (props) => {
 					<CardFooterChild>
 						<Avatar
 							src={isAnswer ? UserBrainThumb : userImage}
-							className={classNames('absolute -top-6', {
+							className={classNames('absolute -top-4', {
 								'start-6': isAnswer,
 								'end-6': !isAnswer,
 							})}
