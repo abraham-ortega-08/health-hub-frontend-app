@@ -55,6 +55,7 @@ export const useChat = (options: UseChatOptions = {}) => {
 					content: response.answer,
 					isAnswer: true,
 					timestamp: Date.now(),
+					documents: response.documents,
 				};
 
 				addMessage(sessionId, aiMessage);

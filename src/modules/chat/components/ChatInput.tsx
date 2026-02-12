@@ -6,28 +6,38 @@ import FilePreview from './FilePreview';
 
 interface ChatInputProps {
 	onSend: (message: string) => void;
+	onCancel?: () => void;
 	files: File[];
 	onAddFiles: (files: File[]) => void;
 	onRemoveFile: (index: number) => void;
 	onClearFiles: () => void;
 	disabled?: boolean;
+	isStreaming?: boolean;
 }
 
 const ChatInput: FC<ChatInputProps> = ({
 	onSend,
+	onCancel,
 	files,
 	onAddFiles,
 	onRemoveFile,
 	onClearFiles,
 	disabled = false,
+	isStreaming = false,
 }) => {
 	const [message, setMessage] = useState('');
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	const handleSend = () => {
-		if (!message.trim() || disabled) return;
+		if (!message.trim() || disabled || isStreaming) return;
 		onSend(message);
 		setMessage('');
+	};
+
+	const handleCancel = () => {
+		if (onCancel && isStreaming) {
+			onCancel();
+		}
 	};
 
 	const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -64,30 +74,43 @@ const ChatInput: FC<ChatInputProps> = ({
 						className='me-2'
 						aria-label='Upload file'
 						onClick={handleUploadClick}
-						isDisable={disabled}
+						isDisable={disabled || isStreaming}
 					/>
 				}
 				lastSuffix={
-					message.trim() && (
+					isStreaming ? (
 						<Button
 							className='ms-2'
 							variant='solid'
 							rounded='rounded'
-							icon='heroicons:paper-airplane'
-							onClick={handleSend}
-							isDisable={disabled}>
-							Send
+							icon='heroicons:x-mark'
+							onClick={handleCancel}
+							color='red'>
+							Cancel
 						</Button>
+					) : (
+						message.trim() && (
+							<Button
+								className='ms-2'
+								variant='solid'
+								rounded='rounded'
+								icon='heroicons:paper-airplane'
+								onClick={handleSend}
+								isDisable={disabled}>
+								Send
+							</Button>
+						)
 					)
 				}>
 				<Input
 					name='message'
 					dimension='xl'
-					placeholder='Ask something'
+					placeholder={isStreaming ? 'Streaming in progress...' : 'Ask something'}
 					onChange={(e) => setMessage(e.target.value)}
 					onKeyPress={handleKeyPress}
 					value={message}
-					disabled={disabled}
+					disabled={disabled || isStreaming}
+					className='!ps-14 !pe-3'
 				/>
 			</FieldWrap>
 

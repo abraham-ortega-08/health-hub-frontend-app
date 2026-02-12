@@ -5,3 +5,5 @@ export { default as ChatInput } from './ChatInput';
 export { default as FilePreview } from './FilePreview';
 export { default as FilePreviewItem } from './FilePreviewItem';
 export { default as ChatSubheader } from './ChatSubheader';
+export { default as DocumentReference } from './DocumentReference';
+export { default as ProgressIndicator } from './ProgressIndicator';
