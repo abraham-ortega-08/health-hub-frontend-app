@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { ChatSession, Message, DocumentReference, UploadedFile } from '../types';
+import { ChatSession, Message, DocumentMetadata, UploadedFile } from '../types';
 
 interface ChatStore {
 	sessions: Record<string, ChatSession>;
@@ -9,7 +9,7 @@ interface ChatStore {
 	addMessage: (sessionId: string, message: Message) => void;
 	updateMessage: (sessionId: string, messageId: string, updates: Partial<Message>) => void;
 	appendToMessage: (sessionId: string, messageId: string, content: string) => void;
-	setMessageMetadata: (sessionId: string, messageId: string, documents?: DocumentReference[], uploadedFiles?: UploadedFile[]) => void;
+	setMessageMetadata: (sessionId: string, messageId: string, documents?: DocumentMetadata[], uploadedFiles?: UploadedFile[]) => void;
 	getCurrentSession: () => ChatSession | null;
 }
 
