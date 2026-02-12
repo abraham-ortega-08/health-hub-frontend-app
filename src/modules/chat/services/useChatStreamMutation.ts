@@ -1,6 +1,6 @@
 import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 import { streamingService, StreamCallbacks, StreamConfig } from './streamingService';
-import { ProgressInfo, DocumentReference, UploadedFile } from '../types';
+import { ProgressInfo, DocumentMetadata, UploadedFile } from '../types';
 
 export interface StreamingRequest {
 	formData: FormData;
