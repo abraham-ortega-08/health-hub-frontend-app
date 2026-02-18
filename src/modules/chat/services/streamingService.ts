@@ -68,7 +68,7 @@ export class StreamingService {
 	): Promise<void> {
 		const abortController = new AbortController();
 		
-		const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+		const baseUrl = process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:3000';
 		const response = await fetch(`${baseUrl}/chat/query-stream`, {
 			method: 'POST',
 			body: formData,
@@ -246,7 +246,7 @@ export class StreamingService {
 
 		// Notificar al servidor
 		try {
-			const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+			const baseUrl = process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:3000';
 			const response = await fetch(`${baseUrl}/chat/cancel-stream/${id}`, {
 				method: 'POST',
 			});
