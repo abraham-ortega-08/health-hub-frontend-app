@@ -1,3 +1,4 @@
+import api, { streamingFetch } from '@/services/axios';
 import { SSEEvent, ProgressInfo, DocumentMetadata, UploadedFile } from '../types';
 
 export interface StreamCallbacks {
@@ -67,14 +68,13 @@ export class StreamingService {
 		config: Required<StreamConfig>
 	): Promise<void> {
 		const abortController = new AbortController();
-		
-		const baseUrl = process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:3000';
-		const response = await fetch(`${baseUrl}/chat/query-stream`, {
+
+		const response = await streamingFetch('chat/query-stream', {
 			method: 'POST',
 			body: formData,
 			signal: abortController.signal,
 			headers: {
-				'Accept': 'text/event-stream',
+				Accept: 'text/event-stream',
 			},
 		});
 
@@ -246,18 +246,8 @@ export class StreamingService {
 
 		// Notificar al servidor
 		try {
-			const baseUrl = process.env.NEXT_PUBLIC_API_BACKEND_URL || 'http://localhost:3000';
-			const response = await fetch(`${baseUrl}/chat/cancel-stream/${id}`, {
-				method: 'POST',
-			});
-			
-			if (!response.ok) {
-				console.warn('Failed to cancel stream on server');
-				return false;
-			}
-			
-			const result = await response.json();
-			return result.success;
+			const result = (await api.post(`chat/cancel-stream/${id}`)) as { success?: boolean };
+			return result?.success ?? false;
 		} catch (error) {
 			console.error('Error cancelling stream:', error);
 			return false;
