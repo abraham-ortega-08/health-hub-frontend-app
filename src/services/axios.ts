@@ -7,6 +7,13 @@ const DATASOURCE = "develop";
 export const apiBaseURL =
   process.env.NEXT_PUBLIC_API_BACKEND_URL || "http://localhost:3000";
 
+// Debug log - remove in production
+if (typeof window !== 'undefined') {
+  console.log('🔍 API Base URL:', apiBaseURL);
+  console.log('🔍 ENV:', process.env.NEXT_PUBLIC_API_BACKEND_URL);
+  console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
+}
+
 // Create axios instance
 const api: AxiosInstance = axios.create({
   baseURL: `${apiBaseURL}/`,
