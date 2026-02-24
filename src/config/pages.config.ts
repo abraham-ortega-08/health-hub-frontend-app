@@ -25,6 +25,12 @@ export const appPages = {
 		text: 'Knowledge Base',
 		icon: 'heroicons:book-open',
 	},
+	productsPage: {
+		id: 'productsPage',
+		to: '/products',
+		text: 'Products',
+		icon: 'heroicons:shopping-bag',
+	},
 };
 
 export const componentsPages = {};
